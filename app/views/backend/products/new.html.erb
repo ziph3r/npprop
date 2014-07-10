@@ -1,0 +1,16 @@
+<div class = 'row'>
+	<div class = 'col-lg-12'>
+		<h3>สร้างที่ดิน</h3>
+	</div>
+</div>
+<div>
+	<%=form_for [:backend, @product], {:html => { :multipart => true }} do |f|%>
+		  <%=render :partial => "form", :locals => {:f => f}%>
+		  <div class="row">
+		  	<div class ='col-lg-12'>
+		  		<%=f.submit "บันทึก", {:class => "btn btn-success"}%>
+		  		<%=link_to "ย้อนกลับ", backend_products_path, {:class => "btn btn-default"}%>
+		  	</div>
+		  </div>
+	<%end%>
+</div>

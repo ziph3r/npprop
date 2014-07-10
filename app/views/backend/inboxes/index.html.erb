@@ -1,0 +1,43 @@
+<div class ='row'>
+	<div class ='col-lg-12'>
+		<h3>Inbox</h3>
+	</div>
+</div>
+
+
+<div>
+	<table class = 'table'>
+		<thead>
+			<tr>
+				<th style='width: 120px;'>Sent at</th>
+				<th>Title</th>
+				<th style='width: 120px;'>Sent by</th>
+				<th style='width: 60px;'>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%@messages.each do |m|%>
+				<%
+					tr_class = ""
+					if !m.is_read
+						tr_class = "unread"
+					end
+				%>
+				<tr class = '<%=tr_class%>'>
+					<td>
+						<%=date_str(m.created_at)%>
+					</td>
+					<td><%=link_to m.title, backend_inbox_path(m)%></td>
+					<td><%=m.sender%></td>
+					<td>
+						<%=link_to backend_inbox_path(m), {:method => :delete, :data => {:confirm => 'Delete this message?'}} do%>
+							<i class='fa fa-times fw'></i>
+						<%end%>
+					</td>
+					
+				</tr>
+			<%end%>
+		</tbody>
+	</table>
+	<%= will_paginate @messages %>
+</div>

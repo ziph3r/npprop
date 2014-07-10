@@ -1,0 +1,13 @@
+<h3>ข่าวสาร</h3>
+<div id ='pin-columns'>
+	<%@newses.each do |news|%>
+		<div class ='pin'>
+			<%=link_to news.title, news_path(news) %>
+			<span class = 'pull-right'><%=date_str(news.updated_at)%></span>
+			<img src="<%=news.image.file.url(:small)%>" />
+			<p>
+				<%=news.short_desc%>
+			</p>
+		</div>
+	<%end%>
+</div>

@@ -1,0 +1,122 @@
+<div class="post-1729 page type-page status-publish hentry">
+    <div class="clearfix">
+        <div class="col-md-12">
+            <h2>
+                <a href="index.html">ติดต่อ</a>
+                            </h2>
+
+            <div class="content-wrapper">
+                <div class="content">
+                                            <div id="contact-map">
+<iframe src="https://maps.google.com/maps?q=37.440587,-122.139816&amp;num=1&amp;ie=UTF8&amp;ll=37.435681,-122.135696&amp;spn=0.041038,0.077162&amp;t=m&amp;z=14&amp;output=embed" height="350" width="100%" class="map"></iframe>
+</div>
+<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+<div class="row">
+<div class="contact-box col-sm-4">
+<h3 class="address"><i class="fa fa-map-marker"></i>Address</h3>
+<p class="content-icon-spacing">13/2 Elizabeth Street<br>Melbourne, Australia</p>
+</div>
+<div class="contact-box col-sm-4">
+<h3 class="call-us"><i class="fa fa-phone"></i>Call us</h3>
+<p class="content-icon-spacing">1900-CO-WORKER <br>1800-3322-4453</p>
+</div>
+<div class="contact-box col-sm-4">
+<h3 class="email"><i class="fa fa-envelope"></i>Email</h3>
+<p class="content-icon-spacing"><a href="mailto:info@byaviators.com">contact management</a><br>
+<a href="mailto:support@byaviators.com">contact support</a></p>
+</div>
+</div>
+<div id="contact-form">
+<h2>ส่งข้อความ</h2>
+<div class="wpcf7" id="wpcf7-f1787-p1729-o1">
+<div class="screen-reader-response"></div>
+
+<%=form_for @inbox, :url => contacts_path, :html => {} do |f|%>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="control-group name">
+                 <div>
+                    <label class="control-label">ชื่อเรื่อง<span class="form-required" title="This field is required.">*</span></label>
+                </div>
+                <div class="controls">
+                    <span class="wpcf7-form-control-wrap your-name">
+                       <%=f.text_field :title, {:style => 'width:100%;'}%>
+                    </span>
+                                                
+                </div>
+            </div>
+        </div>      
+    </div>
+     <div class="row">
+        <div class="col-sm-8">
+            <div class="control-group name">
+                 <div>
+                    <label class="control-label">ชื่อผู้ส่ง<span class="form-required" title="This field is required.">*</span></label>
+                </div>
+                <div class="controls">
+                    <span class="wpcf7-form-control-wrap your-name">
+                       <%=f.text_field :sender, {:style => 'width:100%;'}%>
+                    </span>
+                                                
+                </div>
+            </div>
+        </div>      
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="control-group name">
+                 <div>
+                    <label class="control-label">อีเมล์<span class="form-required" title="This field is required.">*</span></label>
+                </div>
+                <div class="controls">
+                    <span class="wpcf7-form-control-wrap your-name">
+                       <%=f.text_field :email, {:style => 'width:100%;'}%>
+                    </span>
+                                                
+                </div>
+            </div>
+        </div>      
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="control-group name">
+                 <div>
+                    <label class="control-label">เบอร์ติดต่อ</label>
+                </div>
+                <div class="controls">
+                    <span class="wpcf7-form-control-wrap your-name">
+                       <%=f.text_field :phone, {:style => 'width:100%;'}%>
+                    </span>
+                                                
+                </div>
+            </div>
+        </div>      
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="control-group name">
+                 <div>
+                    <label class="control-label">ข้อความ<span class="form-required" title="This field is required.">*</span></label>
+                </div>
+                <div class="controls">
+                    <span class="wpcf7-form-control-wrap your-name">
+                       <%=f.text_area :message, {:style => 'width:100%;height:100px;'}%>
+                    </span>
+                                                
+                </div>
+            </div>
+        </div>      
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="control-group name">
+                <div class="controls">
+                    <%=f.submit "ส่งข้อความ", {:class => "btn btn-primary"}%>                    
+                </div>
+            </div>
+        </div>      
+    </div>
+<%end%>
+<div style="clear:both;height:40px;"></div>
+</div></div></div></div>
+                                  

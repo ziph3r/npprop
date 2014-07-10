@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Npprop</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bootstrap/bootstrap.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'backend/backend.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'backend/sb-admin.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id = 'wrapper'>
+		<%=render :partial => '/topnav'%>
+		<div id='page-wrapper'>
+			<%= yield %>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<div class ='row'>
+	<div class ='col-lg-12'>
+		<h3>แก้ไขที่ดิน <%=@product.title%></h3>
+	</div>
+</div>
+<div style='clear:both;height:40px;'></div>
+<div>
+	 <div class = 'row'>
+	 	  <%@product.product_images.each do |image|%>
+ 		  	 <div class ='col-lg-3 image-thumbs'>
+ 		  	 	<a href="<%=image.image.url(:large)%>" target ="_blank">
+ 		  	 		<img src="<%=image.image.url(:thumb)%>"/>
+ 		  	 	</a>
+ 		  	 	<div class="row">
+ 		  	 		<div class ='col-lg-12' style='padding-left:60px;'>
+						<%=link_to remove_image_backend_product_path(@product, :image_id => image.id), {:method => :delete, :data => {:confirm => 'Do you really want to delete this item?'}} do %>
+							Delete <i class = 'fa fa-trash-o fa-fw'></i>
+						<%end%>
+					</div>
+				</div>
+ 		  	 </div>
+ 		  <%end%>
+ 	</div>
+ 	<div style='clear:both;height:40px;'></div>
+	<%if @product.id%>
+			<div class = 'row'> 
+				<div class = 'col-lg-12'>
+	 		  	   <%=form_for  :product_image, :url => image_upload_backend_product_path , :html => {:multipath => true} do |form| %>
+	 		  	   		<div class = 'row'>
+	 		  	   			<div class = 'col-lg-12'>
+	 		  	   				<%= form.file_field :image, :style => "width: 320px;"%>
+	 		  	   			</div>
+	 		  	   			<div style='clear:both;height:20px;'></div>
+	 		  	   			<div class = 'col-lg-12'>
+	 		  	   				 <input class="btn btn-primary" type="submit" value="Upload"/>
+	 		  	   			</div>
+	 		  	   		</div>
+				   <%end%> 
+				 </div>
+			 </div>
+ 	<%end%>
+ 	<div style='clear:both;height:40px;'></div>
+	<%=form_for [:backend, @product] do |f|%>
+		  
+ 		  
+		  <%=render :partial => "form", :locals => {:f => f}%>
+		  <div class="form-group">
+		  		<%=f.submit "บันทึก", {:class => "btn btn-success"}%>
+		  		<%=link_to "ย้อนกลับ", backend_products_path, {:class => "btn btn-default"}%>
+		  </div>
+	<%end%>
+</div>

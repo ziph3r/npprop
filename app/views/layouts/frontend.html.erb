@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Npprop</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'bootstrap/bootstrap.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'frontend.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'frontend/style.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="main">
+		<div class="main_resize">
+		    <%=render :partial => '/header'%>
+		    <div class="content">
+		      <div class="content_bg">
+		      	 <%if params[:controller] == 'products' && params[:action] == 'index'%>
+		      	 	<div class="mainbar">
+		      	 		<div class="article">
+		      	 		  <%= yield %>
+						</div>					
+					</div>
+					<%=render :partial => '/sidebar'%>
+					<div class="clr"></div>
+		      	 <%else%>
+		      	 	 <%= yield %>
+		      	 <%end%>		        
+				<div class="clr"></div>
+			  </div>
+			</div>
+			<%=render :partial => '/fg_footer'%>
+		</div>
+	</div>
+	<div class="footer">
+	  <div class="footer_resize">
+	    <p class="lf">&copy; Copyright <a href="#">-</a>.</p>
+	    <p class="rf">Layout by Rocket <a href="http://www.rocketwebsitetemplates.com/">Website Templates</a></p>
+	    <div class="clr"></div>
+	  </div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<div class = 'row'>
+	<div class ='col-lg-12'>
+		<h3><%=@message.title%></h3>
+	</div>
+</div>
+<div class = 'row'>
+	<div class ='col-lg-12'>
+		<h5><%=@message.sender%></h5>
+	</div>
+</div>
+<div class = 'row'>
+	<div class ='col-lg-12'>
+		<h5><%=date_str(@message.created_at)%></h5>
+	</div>
+</div>
+<div style='clear:both;height:40px;'></div>
+<div class = 'row'>
+	<div class ='col-lg-12'>
+		<p>
+			<%=h @message.message %>
+		</p>
+	</div>
+</div>
+<div style='clear:both;height:40px;'></div>
+<div class = 'row'>
+	<div class ='col-lg-12'>
+		<%=link_to backend_inbox_path(@message), {:method => :delete, :class => 'btn btn-danger' ,:data => {:confirm => 'Delete this message?'}} do%>
+			ลบ
+		<%end%> &nbsp;
+		<%=link_to "ย้อนกลับ", backend_inboxes_path, :class => 'btn btn-default'%>
+			</div>
+</div>
+

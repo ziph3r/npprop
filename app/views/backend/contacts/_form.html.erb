@@ -1,0 +1,12 @@
+		   <div class="form-group">
+		    	<label for="contact_name">ชื่ออ้างอิง</label>
+		    	<%=f.text_field :name, {:class => 'form-control'}%>
+		  </div>
+		  <div class="form-group">
+		    	<label for="contact_content">เนื้อหา  <em style ='font-weight:normal;'>(ที่อยู่ เบอร์โทร )</em></label>
+		    	<%=f.text_area :content, {:class => 'form-control', :style => 'height: 100px;'}%>
+		  </div>
+		   <div class="form-group">
+		    	<label for="contact_is_show">Default</label>
+		    	<%=f.check_box :is_default%>
+		  </div>

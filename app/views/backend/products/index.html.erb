@@ -1,0 +1,73 @@
+<div class = 'row'>
+	<div class = 'col-lg-12'>
+		<h3>รายการที่ดิน</h3>
+	</div>
+</div>
+<div class = 'row'>
+	<div class = 'col-lg-12'>
+		<%=form_for :search, :url => backend_products_path, :html => { :method => 'GET' } do |f| %>
+			<div class = 'row'>
+				<div class = 'col-lg-3'>
+				    	<%=f.text_field :keyword, {:value => (params[:search].nil? ? "" : params[:search][:keyword]), :class => 'form-control', :placeholder => 'คำสำคัญ'}%>
+						 
+				</div>
+				<div class = 'col-lg-3'>
+				    	<%=f.select :zone_id, [["แสดงทั้งหมด", 0]] + Zone.all.map{ |z| [z.name, z.id]},{:selected => (params[:search].nil? ? 0 : params[:search][:zone_id].to_i)}, {:class => 'form-control'}%>
+				</div>
+				<div class = 'col-lg-3'>
+					<%=f.submit "ค้นหา", {:class => "btn btn-primary"}%>
+				</div>
+				<div class = 'col-lg-3', style='text-align:right;'>
+					<%=link_to new_backend_product_path, {:class => 'btn btn-success'} do%>
+						<i class = 'fa fa-plus fa-fw'></i>&nbsp;สร้าง
+					<%end%>
+				</div>
+			</div>
+		<%end%>
+	</div>
+</div>
+<div style='clear:both;height:40px;'></div>
+	<%@products.each do |product|%>
+		<div class = 'row' style = 'margin-bottom: 20px;'>
+			<div class = 'col-lg-12'>
+				<div class = 'product-box' data-id = '<%=product.id%>' style = 'border: 1px solid #666;' >
+					<div class = 'row'>
+						<div class = 'col-lg-3 image-thumbs'>
+							<%if product.product_images.size > 0%>
+								<img src= "<%=product.product_images.first.image.url(:thumb)%>"/>
+							<%end%>
+						</div>
+						<div class = 'col-lg-6'>
+							<p style ='font-weight: bold;'>
+								<%=product.title%>, <%=product.zone%>, <%=product.province%>
+							</p>
+							<p>
+								<%=product.short_desc%>
+						    </p>
+						</div>
+						<div class = 'col-lg-3' style ='height:100%;'>
+							<div class ='row' style ='height: 60px;'>
+								<div class ='col-lg-12' style='text-align:right;'>
+									<%=product.product_status_master%>
+								</div>
+							</div>
+							<div class ='row'>
+								<div class ='col-lg-12' style='text-align:right;'>
+									<%=link_to "รายละเอียด", backend_product_path(product), {:class => 'btn btn-sm btn-primary'}%>
+										<%=link_to "ลบ", backend_product_path(product), {
+											:data => {:confirm => 'Do you really want to delete this item?'},
+											:method => :delete, 
+											:class => 'btn btn-sm btn-danger'
+										}%>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	<%end%>
+	<%= will_paginate @products, :params => { :search => params[:search] } %>
+</div>
+

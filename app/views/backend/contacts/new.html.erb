@@ -1,0 +1,14 @@
+<div class = 'row'>
+	<div class = 'col-lg-12'>
+		<h3>สร้างการติดต่อ</h3>
+	</div>
+</div>
+<div>
+	<%=form_for [:backend, @contact] do |f|%>
+		  <%=render :partial => "form", :locals => {:f => f}%>
+		  <div class="form-group">
+		  		<%=f.submit "บันทึก", {:class => "btn btn-success"}%>
+		  		<%=link_to "ย้อนกลับ", backend_contacts_path, {:class => "btn btn-default"}%>
+		  </div>
+	<%end%>
+</div>

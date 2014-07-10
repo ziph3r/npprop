@@ -1,0 +1,30 @@
+<div class="sidebar">
+    <%@zones.each do |z| %>
+    <%
+      products = @products.reject{|p| p.zone_id != z.id}
+    %>
+    <%if products.size > 0%>
+      <div class="gadget">
+        <h2 class="star" style='font-size:16px;'>ที่ดิน<%=z.name%></h2>
+        <div class="clr"></div>
+          <ul class="sb_menu">
+            <%products.each do |p|%>
+              <li><%=link_to p.pv_name, zone_products_path(:zone_id => p.pv_id)%> </li>
+            <%end%>
+          </ul>
+      </div>
+    <%end%>
+  <%end%>
+    <!-- <div class="gadget">
+      <h2 class="star">รายการที่ดิน</h2>
+      <div class="clr"></div>
+      <ul class="sb_menu">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">TemplateInfo</a></li>
+        <li><a href="#">Style Demo</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Archives</a></li>
+        <li><a href="#">Web Templates</a></li>
+      </ul>
+    </div> -->
+</div>

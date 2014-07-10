@@ -1,0 +1,68 @@
+<div class = 'row'>
+	<div class = 'col-lg-12'>
+		<h3>ข่าวสาร</h3>
+	</div>
+</div>
+<div class = 'row'>
+	<div class = 'col-lg-12'>
+		<%=form_for :search, :url => backend_news_index_path, :html => { :method => 'GET' } do |f| %>
+			<div class = 'row'>
+				<div class = 'col-lg-3'>
+				    	<%=f.text_field :keyword, {:value => (params[:search].nil? ? "" : params[:search][:keyword]), :class => 'form-control', :placeholder => 'คำสำคัญ'}%>
+						 
+				</div>
+				<div class = 'col-lg-6'>
+					<%=f.submit "ค้นหา", {:class => "btn btn-primary"}%>
+				</div>
+				<div class = 'col-lg-3', style='text-align:right;'>
+					<%=link_to new_backend_news_path, {:class => 'btn btn-success'} do%>
+						<i class = 'fa fa-plus fa-fw'></i>&nbsp;สร้าง
+					<%end%>
+				</div>
+			</div>
+		<%end%>
+	</div>
+</div>
+
+<div>
+	<table class = 'table'>
+		<thead>
+			<tr>
+				<th style='width:120px;'>Updated</th>
+				<th style='width:300px;'>Title</th>
+				<th>Description</th>
+				<th style='width:80px;'>Publish</th>
+				<th style='width:120px;'></th>
+			</tr>
+		</thead>
+		<tbody>
+			<%@newses.each do |news|%>
+				<tr>
+					<td><%=news.updated_at.strftime('%d/%m%y %H:%M')%></td>
+					<td><%=news.title%></td>
+					<td><%=news.short_desc%></td>
+					<td><%=mark(news.is_publish)%></td>
+					<td>
+						<%=link_to edit_backend_news_path(news), {:class => 'btn btn-xs btn-primary'} do %>
+							แก้ไข
+						<%end%>
+						<%=link_to backend_news_path(news), {:class => 'btn btn-xs btn-danger', :method => :delete, :data => {:confirm => 'Do you really want to delete this news?'}} do %>
+							ลบ
+						<%end%>
+					</td>
+				</tr>
+
+			<%end%>
+		</tbody>
+	</table>
+	<!-- 
+					<%#=link_to "Details", backend_product_path(product), {:class => 'btn btn-sm btn-primary'}%>
+					<%#=link_to "Delete", backend_product_path(product), {
+						:data => {:confirm => 'Do you really want to delete this item?'},
+						:method => :delete, 
+						:class => 'btn btn-sm btn-danger'
+					}%> -->
+				
+	<%= will_paginate @newses, :params => { :search => params[:search] } %>
+</div>
+

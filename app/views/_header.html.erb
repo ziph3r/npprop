@@ -1,0 +1,29 @@
+<div class="header">
+      <div class="logo">
+        <h1><a href="#"><span>NP</span>Properties<small>สโลแกน</small></a></h1>
+      </div>
+      <div class="search">
+        
+        <!--/searchform -->
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+      <div class="menu_nav">
+        <%
+          name = params[:controller]
+        %>
+        <ul>
+          <li class='<%=name == "products" ? "active" : ""%>'>
+            <%=link_to "รายการที่ดิน", products_path%>
+          </li>
+          <li class='<%=name == "news" ? "active" : ""%>'>
+            <%=link_to "ข่าวสาร", news_index_path%>
+          </li>
+          <li class='<%=name == "contacts" ? "active" : ""%>'>
+            <%=link_to "ติดต่อเรา", contacts_path%>
+          </li>
+        </ul>
+        <div class="clr"></div>
+      </div>
+      <div class="hbg"><img src='<%=image_path("header_images.jpg")%>' width="923" height="291" alt="" /></div>
+</div>

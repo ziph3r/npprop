@@ -1,0 +1,2 @@
+module Backend::InboxesHelper
+end

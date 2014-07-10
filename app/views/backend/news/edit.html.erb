@@ -1,0 +1,10 @@
+<h3><%=@news.title%></h3>
+<div>
+	<%=form_for [:backend, @news], {:html => { }} do |f|%>
+		  <%=render :partial => "form", :locals => {:f => f}%>
+		  <div class="form-group">
+		  		<%=f.submit "บันทึก", {:class => "btn btn-success"}%>
+		  		<%=link_to "ย้อนกลับ", backend_news_index_path, {:class => "btn btn-default"}%>
+		  </div>
+	<%end%>
+</div>
