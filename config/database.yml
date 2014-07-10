@@ -6,8 +6,8 @@
 #
 default: &default
   adapter: postgresql
-  username: npp_db
-  password: 1qa2ws3ed4rf!
+  username: lanc
+  password: 1q2w3e
   host: localhost
   pool: 5
   timeout: 5000
