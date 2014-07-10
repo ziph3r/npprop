@@ -16,7 +16,7 @@ class Backend::ContactsController < ApplicationController
 			fail = false
 			if @contact.is_default
 				default = Contact.where("is_default = true").first
-				fail = true
+				fail = true if default
 			end
 			if !fail
 				@contact.save
