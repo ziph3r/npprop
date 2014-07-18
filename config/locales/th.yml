@@ -1,0 +1,56 @@
+#encoding :utf-8
+th:
+  will_paginate:
+    previous_label: "Previous"
+    next_label: "Next"
+  activerecord:
+    attributes:
+      product:
+        title: "ชื่อ"
+        content: "เนื้อหา"
+        code: "รหัสที่ดิน"
+      news:
+        title: "ชื่อ"
+        content: "เนื้อหา"
+      contact:
+        name: "ชื่อ"
+        content: "เนื้อหา"
+        is_default: ""
+      inbox:
+        title: "ชื่อเรื่อง"
+        message: "ข้อความ"
+        sender: "ชื่อผู้ส่ง"
+        email: "อีเมล์"
+    errors:
+      models:
+        product:
+          attributes:
+            title:
+              blank: "กรุณาระบุชื่อ"
+            content:
+              blank: "กรุณาระบุเนื้อหา"
+            code:
+              blank: "กรุณากรอกรหัสที่ดิน"
+              taken: "รหัสที่ดินซ้ำ"
+        news:
+          attributes:
+            title:
+              blank: "กรุณาระบุชื่อ"
+            content:
+              blank: "กรุณาระบุเนื้อหา"
+        contact:
+          attributes:
+            name:
+              blank: "กรุณาระบุชื่อ"
+            content:
+              blank: "กรุณาระบุเนื้อหา"
+        inbox:
+          attributes:
+            title:
+              blank: "กรุณากรอกชื่อเรื่อง"
+            message:
+              blank: "กรุณากรอกข้อความ"
+            sender:
+              blank: "กรุณาระบุชื่อผู้ส่ง"
+            email:
+              invalid: "กรุณากรอกอีเมล์ให้ถูกต้อง"

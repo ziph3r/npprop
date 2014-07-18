@@ -24,12 +24,17 @@ body {
 	-webkit-box-shadow: 0 1px 6px rgba(0,0,0,0.175);
 	box-shadow: 0 1px 6px rgba(0,0,0,0.175);
 }
+
 .image-thumbs img {
 	width: 150px;
-	height: auto;
+	height: 100px;
 }
 .image-thumbs > img {
 	width: 150px;
-	height: auto;
+	height: 100px;
+}
+.image-thumbs img.gallery {
+	width: 150px;
+	height: auto !important;
 }
 tr.unread { background-color: #DDF8FD; }

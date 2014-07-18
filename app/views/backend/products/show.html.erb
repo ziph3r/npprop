@@ -1,7 +1,7 @@
 
 <div class ='row'>
 	<div class ='col-lg-12'>
-		<h3><%=@product.title%></h3>
+		<h3><%=@product.code%>: <%=@product.title%></h3>
 	</div>
 </div>
 <div class ='row'>
@@ -69,6 +69,12 @@
 <div class ='row'>
 	<div class ='col-lg-12'>
 		<b>แสดงรายการที่ดินนี้บนหน้าเว็บไซต์</b> <%=mark(@product.is_show)%>
+	</div>
+</div>
+<div style='clear:both;height:20px;'></div>
+<div class ='row'>
+	<div class ='col-lg-12'>
+		<b>แสดงในที่ดินเด่น</b> <%=mark(@product.is_starred)%>
 	</div>
 </div>
 <div style='clear:both;height:40px;'></div>

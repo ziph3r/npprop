@@ -1,7 +1,17 @@
+<%if @news.errors.any? %>
+            <div class = "row alert alert-danger">
+              <h4>ไม่สามารถบันทึกได้เนื่องจาก:</h4>
+              <ul id = "error-list">
+                <% @news.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+          </div>
+<%end%>
 <div class = 'row'>
 	<div class = 'col-lg-12'>
 		<div class="form-group">
-			<label for="product_title">ชื่อข่าว</label>
+			<label for="news_title">ชื่อข่าว</label>
 			<%=f.text_field :title, {:class => 'form-control'}%>
 		</div>
 	</div>
@@ -9,7 +19,7 @@
 <div class = 'row'>
 	<div class = 'col-lg-12'>
 		<div class="form-group">
-			<label for="product_short_desc">คำอธิบาย</label>
+			<label for="news_short_desc">คำอธิบาย</label>
 			<%=f.text_area :short_desc, {:class => 'form-control', :style => 'height: 100px;'}%>
 		</div>
 	</div>
@@ -17,7 +27,7 @@
 <div class = 'row'>
 	<div class = 'col-lg-12'>
 		<div class="form-group">
-			<label for="product_cover_id">ภาพหน้าปก <em style ='font-weight:normal;'>(เลือกภาพที่ได้อัพโหลดไว้แล้วใน เมนูภาพข่าว)</em></label>
+			<label for="news_cover_id">ภาพหน้าปก <em style ='font-weight:normal;'>(เลือกภาพที่ได้อัพโหลดไว้แล้วใน เมนูภาพข่าว)</em></label>
 			<%=f.select :cover_id, Image.all.map{ |z| [z.name, z.id]},{}, {:class => 'form-control'}%>
 		</div>
 	</div>
@@ -25,7 +35,7 @@
 <div class = 'row'>
 	<div class = 'col-lg-12'>
 		<div class="form-group">
-		<label for="product_content">เนื้อหา</label>
+		<label for="news_content">เนื้อหา</label>
 		<%=f.text_area :content, {:class => 'form-control', :style => 'height: 200px;'}%>
 	</div>
 	</div>
@@ -33,7 +43,7 @@
 <div class = 'row'>
 	<div class = 'col-lg-12'>
 		<div class="form-group">
-			<label for="product_is_publish">แสดงบนเว็บไซต์</label>
+			<label for="news_is_publish">แสดงบนเว็บไซต์</label>
 			<%=f.check_box :is_publish%>
 		</div>
 	</div>

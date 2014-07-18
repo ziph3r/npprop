@@ -1,0 +1,55 @@
+<%
+	records ||= []
+%>
+<table id = "product-table">
+	<tbody>
+		<%records.each_slice(4) do |record|%>
+			<tr>
+			<%record.each do |r|%>
+				<td class = "product-table-block">
+					<table>
+						<tr>
+						 	<td>
+						 		<table class = 'product-item'>
+						 			<tr>
+						 				<td class = 'td-open' data-id = '<%=r.id%>'>
+						 					<div class = 'product-details-box'>
+						 						<%=link_to product_path(r) do %>
+						 						<div class = "product-img">
+							 						<%if r.product_images.any?%>
+							 							<img src = "<%=r.product_images.first.image.url(:thumb)%>" />
+							 						<%else%>
+							 							No Image
+							 						<%end%>
+							 					</div>
+							 					<%end%>
+						 						<div class = 'product-code'>
+							 						<%=link_to r.code, product_path(r)%>
+							 					</div>
+							 					<div class = 'product-detail'>
+							 						<%=r.short_desc%>
+							 					</div>
+							 					<div class = 'product-price'>
+							 						<%if r.is_sell %>
+		                                                <%=r.land_price.nil? ? "สอบถามราคา" : r.land_price%>
+		                                            <%elsif r.is_hold %>
+		                                                ยังไม่ขาย
+		                                            <%else%>
+		                                                ขายแล้ว
+		                                            <%end%>
+							 					</div>
+						 					</div>
+						 				</td>
+						 			</tr>
+						 		</table>
+						 	</td>
+						</tr>
+					</table>
+				</td>
+			<%end%>
+			</tr>
+		<%end%>
+	</tbody>
+</table>
+
+

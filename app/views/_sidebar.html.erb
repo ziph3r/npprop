@@ -1,11 +1,18 @@
 <div class="sidebar">
+    <div class="gadget">
+        <h2 class="star" style='font-size:14px;'>
+            ที่ดินเด่น 
+            <%=link_to "click ...", products_path, :style => "font-size: 12px;" %>
+        </h2>
+    </div>
     <%@zones.each do |z| %>
     <%
       products = @products.reject{|p| p.zone_id != z.id}
     %>
+    
     <%if products.size > 0%>
       <div class="gadget">
-        <h2 class="star" style='font-size:16px;'>ที่ดิน<%=z.name%></h2>
+        <h2 class="star" style='font-size:14px;'>ที่ดิน<%=z.name%></h2>
         <div class="clr"></div>
           <ul class="sb_menu">
             <%products.each do |p|%>

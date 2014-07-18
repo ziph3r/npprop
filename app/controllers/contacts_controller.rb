@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class ContactsController < FrontendsController
 	layout 'frontend'
 
 	def index
@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
 		if @inbox.valid?
 			@inbox.save
 
-			redirect_to contacts_path, :notice => "The email is already registered"
+			redirect_to contacts_path, :notice => "ข้อความของท่านถูงส่งให้ทีมงานแล้ว"
 		else
 			render :index
 		end

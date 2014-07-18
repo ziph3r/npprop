@@ -22,7 +22,7 @@ class Backend::ContactsController < ApplicationController
 				@contact.save
 				redirect_to backend_contacts_path
 			else
-				@contact.errors.add(:is_default, "Default error")
+				@contact.errors.add(:is_default, "default contact สร้างได้แค่ 1 record")
 				render :new
 			end
 		else

@@ -1,13 +1,10 @@
+
 <div class="header">
       <div class="logo">
-        <h1><a href="#"><span>NP</span>Properties<small>สโลแกน</small></a></h1>
-      </div>
-      <div class="search">
-        
-        <!--/searchform -->
-        <div class="clr"></div>
+         <img src = "/assets/logo_np.png"/>
       </div>
       <div class="clr"></div>
+
       <div class="menu_nav">
         <%
           name = params[:controller]
@@ -24,6 +21,11 @@
           </li>
         </ul>
         <div class="clr"></div>
+        <div id = 'bkm-link'>
+          <!-- <a href="javascript:window.external.AddFavorite('http://www.npproperty.net',%20'NP Property')" class="main-link">
+          เก็บหน้านี้ - add to favorites
+          </a> -->
+        </div>
       </div>
-      <div class="hbg"><img src='<%=image_path("main2.jpg")%>' width="923" height="291" alt="" /></div>
+      <div class="hbg"><img src='<%=image_path("main2.jpg")%>'  alt="" /></div>
 </div>

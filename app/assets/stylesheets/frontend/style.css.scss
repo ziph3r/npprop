@@ -3,7 +3,7 @@ body {
 	margin:0;
 	padding:0;
 	width:100%;
-	color:#959595;
+	color:#252525;
 	font:normal 12px/1.8em Arial, Helvetica, sans-serif;
 	background: asset_url('bg.jpg');
 }
@@ -13,20 +13,34 @@ html {
 }
 .main {
 	padding:0;
-	margin:0;
-	background: asset_url('main_bg.jpg') repeat-y center;
+	margin:0 auto;
+	/*background: asset_url('main_bg.jpg') repeat-y center;*/
 }
 .logo {
 	float:left;
-	width:400px;
-	height:86px;
+	width:300px;
 	padding:0;
+	display: block;
+	height: 0;
 	margin:0 auto;
 }
+.logo img {
+	width: 100%;
+	height: 150px;
+	position: relative;
+	top: 18px;
+}
+.logo p {
+	padding-left:20px;
+	font-size: 14px;
+	color: #fff;	
+	font-style: italic;
+}
+
 h1 {
 	margin:0;
 	padding:20px 0 0 0;
-	color:#636363;
+	color:#513387 !important;
 	font:bold 38px/1.2em Arial, Helvetica, sans-serif;
 	letter-spacing:-2px;
 }
@@ -35,7 +49,7 @@ h1 a, h1 a:hover {
 	text-decoration:none;
 }
 h1 span {
-	color:#78bbe6;
+	color:#F47920;
 }
 h1 small {
 	padding:0 10px;
@@ -43,11 +57,14 @@ h1 small {
 	letter-spacing:normal;
 }
 h2 {
-	font:normal 24px Arial, Helvetica, sans-serif;
+	font:18px Arial, Helvetica, sans-serif;
 	padding:8px 0;
 	margin:0;
-	color:#595959;
+	color:#513387;
+	font-weight: bold;
+
 }
+h3 { color: #513387; font-weight: bold;}
 p {
 	margin:8px 0;
 	padding:0 0 8px 0;
@@ -56,8 +73,12 @@ p {
 p.spec {
 }
 a {
-	color:#97c950;
-	text-decoration:underline;
+	color:#F47920; /*#97c950;*/
+	text-decoration:none;
+}
+a:hover {
+	color: #F47920;
+	text-decoration: underline;
 }
 a.rm, a.com {
 	padding:0;
@@ -70,6 +91,7 @@ a.rm, a.com {
 .main_resize {
 	margin:0 auto;
 	width:969px;
+	background: #fff; /*#8F0584; Purple*/
 }
 .header {
 	margin:0 auto;
@@ -78,14 +100,22 @@ a.rm, a.com {
 .hbg {
 	padding:0;
 	margin:0 0 10px;
+	
+}
+
+.hbg img {
+	height: 100px;
+	width: 100%;
 }
 .menu_nav {
 	margin:0 0 10px;
 	padding:0;
+	height: 180px;
 }
 .menu_nav ul {
 	list-style:none;
 	margin:0;
+	margin-top: 110px;
 	padding:0;
 	float:right;
 }
@@ -93,21 +123,23 @@ a.rm, a.com {
 	margin:0;
 	padding:15px 5px 15px 0;
 	float:left;
-	background: asset_url('menu_line.jpg') repeat-x top;
+	/*background: asset_url('menu_line.jpg') repeat-x top;*/
+	border-top: 3px solid #EEEE14;
 }
 .menu_nav ul li a {
 	display:block;
 	margin:0;
 	padding:11px 25px;
-	color:#878989;
+	color:#513387;
 	text-decoration:none;
-	font-size:13px;
+	font-size:14px;
+	font-weight: bold;
 	line-height:16px;
 }
 .menu_nav ul li.active a, .menu_nav ul li a:hover {
 	color:#fff;
 	text-decoration:none;
-	background:#78bbe6;
+	background:#F47920; /*#78bbe6;*/
 }
 .content {
 	padding:0;
@@ -118,7 +150,7 @@ a.rm, a.com {
 	margin:0;
 	padding:0;
 	float:right;
-	width:638px;
+	width:700px;
 }
 .mainbar img {
 	padding:4px;
@@ -134,7 +166,7 @@ a.rm, a.com {
 	padding:10px 0 5px 15px;
 }
 .mainbar .article a {
-	color:#78bbe6;
+	color:#F47920;
 }
 .mainbar .post-data a {
 	color:#595959;
@@ -146,12 +178,13 @@ a.rm, a.com {
 }
 .sidebar {
 	padding:0;
+	padding-top: 25px !important;
 	float:left;
-	width:285px;
+	width:220px;
 }
 .sidebar .gadget {
 	margin:0;
-	padding:10px 15px 10px 0;
+	padding:0 15px 0 0;
 }
 .sidebar .gadget .testi {
 	padding:0 0 0 0;
@@ -181,15 +214,16 @@ ul.ex_menu li {
 }
 ul.sb_menu li a, ul.ex_menu li a {
 	display:block;
-	color:#959595;
+	color: #666; /*#DB21DB;*/
 	text-decoration:none;
 	padding:5px;
 	margin-left:-15px;
 	padding-left:15px;
+	font-weight: bold;
 }
 ul.sb_menu li a:hover, ul.ex_menu li a:hover, ul.sb_menu li.active a, ul.ex_menu li.active a {
 	color:#FFF;
-	background:#78bbe6;
+	background:#F47920;
 }
 ul.sb_menu li a:hover {
 	text-decoration:none;
@@ -209,7 +243,8 @@ ul.ex_menu li a:hover {
 }
 .fbg {
 	padding:10px 0;
-	background: asset_url('fbg_bg.jpg') repeat-y center;
+	/*background: asset_url('fbg_bg.jpg') repeat-y center; */
+	background: #513387;
 }
 .fbg_resize {
 	margin:0 auto;
@@ -230,7 +265,8 @@ ul.ex_menu li a:hover {
 .fbg .col {
 	margin:0;
 	float:left;
-	background: asset_url('fbg_line.gif') repeat-y right;
+	/*background: asset_url('fbg_line.gif') repeat-y right;*/
+	/*border-right: 2px solid #fff;*/
 }
 .fbg .c1 {
 	padding:0 15px 0 0;
@@ -253,12 +289,12 @@ ul.ex_menu li a:hover {
 	float:left;
 }
 .footer {
-	background: asset_url('main_bg.jpg') repeat-y center;
+	/*background: asset_url('main_bg.jpg') repeat-y center;*/
 }
 .footer_resize {
 	margin:0 auto;
 	padding:20px 0;
-	width:923px;
+	width:969px;
 	color:#9a9a9a;
 }
 .footer p {
@@ -273,7 +309,7 @@ ul.ex_menu li a:hover {
 	text-decoration:underline;
 }
 .footer a:hover {
-	text-decoration:none;
+	text-decoration: underline;
 }
 .footer .lf {
 	float:left;

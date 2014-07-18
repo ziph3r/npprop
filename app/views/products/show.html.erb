@@ -1,32 +1,95 @@
-
+<!-- Thumbnail Item Skin Begin -->
+            <style>
+                /* jssor slider thumbnail navigator skin 03 css */
+                /*
+                .jssort03 .p            (normal)
+                .jssort03 .p:hover      (normal mouseover)
+                .jssort03 .pav          (active)
+                .jssort03 .pav:hover    (active mouseover)
+                .jssort03 .pdn          (mousedown)
+                */
+                .jssort03 .w, .jssort03 .pav:hover .w
+                {
+                    position: absolute;
+                    width: 60px;
+                    height: 30px;
+                    border: white 1px dashed;
+                }
+                * html .jssort03 .w
+                {
+                    width /**/: 62px;
+                    height /**/: 32px;
+                }
+                .jssort03 .pdn .w, .jssort03 .pav .w { border: 1px solid #F03203; }
+                .jssort03 .c
+                {
+                    width: 62px;
+                    height: 32px;
+                    filter:  alpha(opacity=45);
+                    opacity: .45;
+                    
+                    transition: opacity .6s;
+                    -moz-transition: opacity .6s;
+                    -webkit-transition: opacity .6s;
+                    -o-transition: opacity .6s;
+                }
+                .jssort03 .p:hover .c, .jssort03 .pav .c
+                {
+                    filter:  alpha(opacity=0);
+                    opacity: 0;
+                }
+                .jssort03 .p:hover .c
+                {
+                    transition: none;
+                    -moz-transition: none;
+                    -webkit-transition: none;
+                    -o-transition: none;
+                }
+</style>
 <div id="main-content" class="col-md-12 col-sm-12">
   <div class="property-detail">
    
     <div class="row">
       <div class="col-md-12">
-        <h1 class="property-detail-title"><%=@product.title%></h1>
+        <h3 class="property-detail-title"><%=@product.title%></h3>
         <div class="property-detail-subtitle"><div class=" no-columns hierarchy_select_formatter hierarchy-select hf-property-location"><div class="field-item field-item-0"><div class="field-value">
            <%=link_to @product.province, zone_products_path(:zone_id => @product.province_id)%>
         </div></div></div>                 </div>
       </div><!-- /.header-title -->
     </div><!-- /.row -->
+    <%if @product.product_images.any? %>
      <div class = "row">
         <div class="col-md-12 image-show">
-            <%
-                image = @product.product_images.sample
-            %>
-            <%if image%>
-                <img src = "<%=image.image.url(:large)%>"/>
-            <%end%>
+           <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 660px; height: 300px;">
+                <!-- Slides Container -->
+                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 660px; height: 300px;">
+                    <%@product.product_images.each do |i|%>
+                        <div>
+                            <img u = "image" src ="<%=i.image.url%>" />
+
+                            <img u="thumb" src="<%=i.image.url(:thumb)%>" />
+                        </div>
+                    <%end%>
+                </div>
+                 <div u="thumbnavigator" class="jssort03" style="position: absolute; width: 660px; height: 60px; left:0px; bottom: 0px;">
+                        <div style=" background-color: #000; filter:alpha(opacity=30); opacity:.3; width: 100%; height:100%;">
+                            
+                        </div>
+                        <div u="slides" style="cursor: move;position: absolute; width: 660px; height: 60px; left:0px; bottom: 0px;">
+                            <div u="prototype" class="p" style="POSITION: absolute; WIDTH: 62px; HEIGHT: 32px; TOP: 0; LEFT: 0;">
+                                <div class="w"><ThumbnailTemplate style=" WIDTH: 100%; HEIGHT: 100%; border: none;position:absolute; TOP: 0; LEFT: 0;"></ThumbnailTemplate></div>
+                                <div class="c" style="POSITION: absolute; BACKGROUND-COLOR: #000; TOP: 0; LEFT: 0">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Thumbnail Item Skin End -->
+                </div>
+            </div>
         </div>
     </div>
+    <%end%>
 
-    <div class="row">
-      <div class="col-md-12">
-      </div><!-- /.col-md-6 -->
-    </div><!-- /.row -->
-
-    <div class="row">
+    <div class="row" style = "margin-top: 40px;">
         <div class="col-md-4">
             <div class=" table-group overview hf-property-overview">
                     <h2>ข้อมูลที่ดิน</h2>
@@ -102,5 +165,25 @@
     </div> 
   </div>
 </div>
-
+<script>
+    jQuery(document).ready(function ($) {
+        var options = {
+            $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$,
+                $ChanceToShow: 2,
+                $ActionMode: 1,                               
+                $AutoCenter: 3,                                 
+                $Lanes: 1,                                      
+                $SpacingX: 3,                                  
+                $SpacingY: 3,                                   
+                $DisplayPieces: 9,                              
+                $ParkingPosition: 260,                         
+                $Orientation: 1,                                
+                $DisableDrag: false  
+             
+            }
+        };
+        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+    });
+</script>
                         

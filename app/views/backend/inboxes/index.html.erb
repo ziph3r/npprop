@@ -28,7 +28,7 @@
 						<%=date_str(m.created_at)%>
 					</td>
 					<td><%=link_to m.title, backend_inbox_path(m)%></td>
-					<td><%=m.sender%></td>
+					<td><%=h m.sender%></td>
 					<td>
 						<%=link_to backend_inbox_path(m), {:method => :delete, :data => {:confirm => 'Delete this message?'}} do%>
 							<i class='fa fa-times fw'></i>

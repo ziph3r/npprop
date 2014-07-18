@@ -1,6 +1,7 @@
 class Backend::ProductsController < ApplicationController
 	layout 'backend'
 	def index
+		# raise('test')
 		params[:page] ||= 1
 		condition_str = " true "
 		args = []
@@ -12,6 +13,13 @@ class Backend::ProductsController < ApplicationController
 			if params[:search][:zone_id] && params[:search][:zone_id].to_i != 0
 				condition_str += " and z.id = ? "
 				args << params[:search][:zone_id]
+			end
+			if params[:search][:province_id] && params[:search][:province_id].to_i != 0
+				condition_str += " and products.province_id = ? "
+				args << params[:search][:province_id]
+			end
+			if params[:search][:is_starred] && params[:search][:is_starred].to_i == 1
+				condition_str += " and products.is_starred is true"
 			end
 		end
 
@@ -86,6 +94,7 @@ class Backend::ProductsController < ApplicationController
 	def product_params
 		params.require(:product).permit(
 			:title,
+			:code,
 			:content,
 			:short_desc,
 			:sqr_area,
@@ -99,6 +108,7 @@ class Backend::ProductsController < ApplicationController
 			:product_status_master_id,
 			:contact_id,
 			:province_id,
+			:is_starred,
 			product_images_attributes: [:id, :image]
 		)
 	end

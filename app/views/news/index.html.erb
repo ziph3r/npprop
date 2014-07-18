@@ -1,13 +1,30 @@
 <h3>ข่าวสาร</h3>
-<div id ='pin-columns'>
+<div id ='news-items'>
 	<%@newses.each do |news|%>
-		<div class ='pin'>
-			<%=link_to news.title, news_path(news) %>
-			<span class = 'pull-right'><%=date_str(news.updated_at)%></span>
-			<img src="<%=news.image.file.url(:small)%>" />
-			<p>
-				<%=news.short_desc%>
-			</p>
-		</div>
+			<div class ='news-item'>
+				<div class = "row">
+					<div class = "news-detail-img">
+						<%=link_to news_path(news) do %>
+							<img src="<%=news.image.file.url(:small)%>" />
+						<%end%>
+					</div>
+					<div class = "news-detail-content">
+						<div class = 'news-title pull-left'>
+							<%=link_to news.title, news_path(news) %>
+						</div>
+						<div class = 'news-date pull-right'>
+							<%=date_str(news.updated_at)%>
+						</div>
+						<div class ="clr"></div>
+						<div>
+							<p>
+								<%=news.content%>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		
 	<%end%>
+	<%=will_paginate @newses%>
 </div>

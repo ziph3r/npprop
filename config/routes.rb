@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   namespace :backend do 
     resources :products do 
     	post :image_upload, on: :member

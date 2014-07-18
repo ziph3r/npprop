@@ -12,12 +12,20 @@
 						 
 				</div>
 				<div class = 'col-lg-3'>
-				    	<%=f.select :zone_id, [["แสดงทั้งหมด", 0]] + Zone.all.map{ |z| [z.name, z.id]},{:selected => (params[:search].nil? ? 0 : params[:search][:zone_id].to_i)}, {:class => 'form-control'}%>
+				    	<%=f.select :zone_id, [["แสดงทุกภาค", 0]] + Zone.all.map{ |z| [z.name, z.id]},{:selected => (params[:search].nil? ? 0 : params[:search][:zone_id].to_i)}, {:class => 'form-control'}%>
 				</div>
 				<div class = 'col-lg-3'>
+				    	<%=f.select :province_id, [["แสดงทุกจังหวัด", 0]] + Province.all.map{ |z| [z.name, z.id]},{:selected => (params[:search].nil? ? 0 : params[:search][:province_id].to_i)}, {:class => 'form-control'}%>
+				</div>
+				<div class = 'col-lg-1' style = 'position: relative; top: -5px;'>
+						<span style = 'font-size: 12px; font-weight: bold;'> ที่ดินเด่น </span>
+				    	<%=f.check_box :is_starred, {:checked =>
+				    	(params[:search].nil? ? false : params[:search][:is_starred].to_i == 1), :style => "margin-left: 15px;"}%>
+				</div>
+				<div class = 'col-lg-1'>
 					<%=f.submit "ค้นหา", {:class => "btn btn-primary"}%>
 				</div>
-				<div class = 'col-lg-3', style='text-align:right;'>
+				<div class = 'col-lg-1', style='text-align:right;'>
 					<%=link_to new_backend_product_path, {:class => 'btn btn-success'} do%>
 						<i class = 'fa fa-plus fa-fw'></i>&nbsp;สร้าง
 					<%end%>
@@ -39,7 +47,7 @@
 						</div>
 						<div class = 'col-lg-6'>
 							<p style ='font-weight: bold;'>
-								<%=product.title%>, <%=product.zone%>, <%=product.province%>
+								<span style = "color: #428bca;"><%=product.code%></span>: <%=product.title%>, <em style = "font-weight: normal;"> <%=product.zone%>, <%=product.province%> </em>
 							</p>
 							<p>
 								<%=product.short_desc%>
@@ -47,7 +55,12 @@
 						</div>
 						<div class = 'col-lg-3' style ='height:100%;'>
 							<div class ='row' style ='height: 60px;'>
-								<div class ='col-lg-12' style='text-align:right;'>
+								<div class ='col-lg-6' style='text-align:right;'>
+									<%if product.is_starred %>
+										<i class = "fa fa-star fa-fw"></i>
+									<%end%>
+								</div>
+								<div class ='col-lg-6' style='text-align:right;'>
 									<%=product.product_status_master%>
 								</div>
 							</div>

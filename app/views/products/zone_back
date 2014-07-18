@@ -1,0 +1,62 @@
+<h3><%=@selected_province.name%></h3>
+<div id="pin-columns">
+        <%@product_stars.each do |p|%>
+            <div class="pin">
+                <div class="property-box">
+                    <div class="property-box-inner">
+                        <div class="property-box-header">
+                            <h3 class="property-box-title"><%=link_to p.title, product_path(p)%> </h3>
+                            <div class="property-box-subtitle">
+                                <div class=" no-columns hierarchy_select_formatter hierarchy-select hf-property-location">
+                                    <div class="field-item field-item-0">
+                                        <div class="field-value link-green">
+                                            <%=link_to p.province, zone_products_path(:zone_id => p.province_id)%>
+                                        </div>
+                                        <div class="custom-grid-desc">
+                                           <p>
+                                                <%=p.short_desc%>
+                                           </p>
+                                        </div>
+                                    </div>
+                                </div></div>
+                        </div>
+
+                        <div class="property-box-picture">
+                            <div class="property-box-price">
+                                <div class=" no-columns number number hf-property-price">
+                                    <div class="field-item field-item-0">
+                                        <div class="field-prefix">
+                                            
+                                        </div>
+                                        <div class="field-value">
+                                            <%if p.is_sell %>
+                                                <%=p.land_price.nil? ? "สอบถามราคา" : p.land_price%>
+                                            <%elsif p.is_hold %>
+                                                ยังไม่ขาย
+                                            <%else%>
+                                                ขายแล้ว
+                                            <%end%>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div><!-- /.property-box-price -->
+                            <div class="property-box-picture-inner">
+                                <a href="<%=product_path(p)%>" class="property-box-picture-target">
+                                    <%if p.product_images.any?%>
+                                    <img src="<%=p.product_images.first.image.url(:small)%>" alt="545 Shore Dr">
+                                    <%end%>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="property-box-meta">
+                            <div class=" html-group meta hf-property-meta">
+                                <div class="field-items">
+                 
+                                </div>
+                             </div>      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <%end%>     
+ </div>
