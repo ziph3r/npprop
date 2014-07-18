@@ -5,6 +5,7 @@
 	<tbody>
 		<%records.each_slice(4) do |record|%>
 			<tr>
+			<%count = 1%>
 			<%record.each do |r|%>
 				<td class = "product-table-block">
 					<table>
@@ -46,6 +47,14 @@
 						</tr>
 					</table>
 				</td>
+				<%count += 1%>
+			<%end%>
+			<%if count <= 4 && count != 1%>
+				<%(4-count + 1).times do |t|%>
+					<td class = "product-table-block">
+						&nbsp;
+					</td>
+				<%end%>
 			<%end%>
 			</tr>
 		<%end%>
