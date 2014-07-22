@@ -10,6 +10,9 @@
           name = params[:controller]
         %>
         <ul>
+          <li class='<%=name == "home" ? "active" : ""%>'>
+            <%=link_to "หน้าแรก", home_index_path%>
+          </li>
           <li class='<%=name == "products" ? "active" : ""%>'>
             <%=link_to "รายการที่ดิน", products_path%>
           </li>
@@ -27,5 +30,5 @@
           </a> -->
         </div>
       </div>
-      <div class="hbg"><img src='<%=image_path("main2.jpg")%>'  alt="" /></div>
+      <!-- <div class="hbg"><img src='<%=image_path("main2.jpg")%>'  alt="" /></div> -->
 </div>

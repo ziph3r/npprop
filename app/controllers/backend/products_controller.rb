@@ -53,6 +53,10 @@ class Backend::ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 	end
 
+	def upload
+		@product = Product.find(params[:id])
+	end
+
 	def update
 		@product = Product.find(params[:id])
 
@@ -75,7 +79,7 @@ class Backend::ProductsController < ApplicationController
 		@product = Product.find(params[:id])
 		@product_image = @product.product_images.new(product_image_params)
 		if @product_image.save
-			redirect_to edit_backend_product_url(@product)	        
+			redirect_to upload_backend_product_url(@product)	        
 		else 
 			# redirect_to action: 'new'
 		end
@@ -86,7 +90,7 @@ class Backend::ProductsController < ApplicationController
 	    product_image = ProductImage.find(params[:image_id])
 	    product_image.destroy if product_image
 
-	    redirect_to edit_backend_product_url(@product)
+	    redirect_to upload_backend_product_url(@product)	
 	end
 
 	private

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :products do 
     	post :image_upload, on: :member
     	delete :remove_image, on: :member
+      get :upload, on: :member
     	# get :search, on: :collection
     end
     resources :news
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     root to: 'products#index'
   end
 
+  resources :home, :only => [:index]
   resources :products, only: [:index, :show] do 
     get 'zones/:zone_id' => 'products#zone', on: :collection, as: :zone
   end
