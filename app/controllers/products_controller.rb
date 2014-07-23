@@ -24,6 +24,7 @@ class ProductsController < FrontendsController
 		@product_stars = Product.where(
 			"products.is_show = true and products.is_starred = true "
 		).order('updated_at desc').paginate(:page => params[:page])	
+
 	end
 
 	def zone
@@ -48,6 +49,11 @@ class ProductsController < FrontendsController
 		@zones = Zone.all 
 		@selected_province = Province.find(params[:zone_id])
 		@products = Product.find_by_sql(sql)
+
+		respond_to do |format|
+			format.html {}
+			format.js {}
+		end
 	end
 
 	def show

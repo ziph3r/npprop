@@ -320,3 +320,12 @@ div.property-box-subtitle a, div.property-box-subtitle a {
 	text-decoration: none !important;
 	font-weight: bold;
 }
+h2.star {
+	cursor: pointer;
+}
+.sb_menu ul {
+
+}
+ul.collapsed li {
+	display: none;
+}

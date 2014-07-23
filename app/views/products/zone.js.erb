@@ -1,0 +1,13 @@
+$("#products-list").html("<%= escape_javascript(render partial: '/tableitem', locals: { items: @product_stars } ) %>"); 
+ $('li.active').parent().removeClass('collapsed');
+
+ $('h2.star').click(function(e) {
+    var data_id = $(e.target).attr('data-id');
+    var ul = $('ul[data-id =' + data_id + ']');
+    ul.toggleClass('collapsed').promise().done(function(){
+        if (!ul.hasClass('collapsed')) {
+          $(ul).find('li').slideDown('slow');
+        }
+    });
+ })
+

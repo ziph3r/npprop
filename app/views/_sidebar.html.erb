@@ -1,3 +1,6 @@
+<%
+  params[:zone_id] ||= 0
+%>
 <div class="sidebar">
     <div class="gadget">
         <h2 class="star" style='font-size:14px;'>
@@ -9,29 +12,40 @@
     <%
       products = @products.reject{|p| p.zone_id != z.id}
     %>
-    
+   
     <%if products.size > 0%>
       <div class="gadget">
-        <h2 class="star" style='font-size:14px;'>ที่ดิน<%=z.name%></h2>
+        <h2 class="star" data-id = '<%=z.id%>' style='font-size:14px;'>ที่ดิน<%=z.name%></h2>
         <div class="clr"></div>
-          <ul class="sb_menu">
+          <ul class="sb_menu" data-id = '<%=z.id%>'>
             <%products.each do |p|%>
-              <li><%=link_to p.pv_name, zone_products_path(:zone_id => p.pv_id)%> </li>
+              <%
+                 li_class = "";
+                 if p.pv_id == params[:zone_id].to_i
+                  li_class = "active"
+                 end
+              %>
+              <li class = '<%=li_class%>'><%=link_to p.pv_name, zone_products_path(:zone_id => p.pv_id), {}%> </li>
             <%end%>
           </ul>
       </div>
     <%end%>
   <%end%>
-    <!-- <div class="gadget">
-      <h2 class="star">รายการที่ดิน</h2>
-      <div class="clr"></div>
-      <ul class="sb_menu">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">TemplateInfo</a></li>
-        <li><a href="#">Style Demo</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Archives</a></li>
-        <li><a href="#">Web Templates</a></li>
-      </ul>
-    </div> -->
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+
+     $('li.active').parent().removeClass('collapsed');
+
+     $('h2.star').click(function(e) {
+        var data_id = $(e.target).attr('data-id');
+        var ul = $('ul[data-id =' + data_id + ']');
+        ul.toggleClass('collapsed').promise().done(function(){
+            if (!ul.hasClass('collapsed')) {
+              $(ul).find('li').slideDown('slow');
+            }
+        });
+     })
+
+  })
+</script>
