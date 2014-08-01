@@ -46,23 +46,24 @@
                     -o-transition: none;
                 }
 </style>
-<div id="main-content" class="col-md-12 col-sm-12">
-  <div class="property-detail">
-   
+    <div style='height:10px;'></div>
+    <div class = 'divide-content'>
     <div class="row">
-      <div class="col-md-12">
-        <h3 class="property-detail-title"><%=@product.title%></h3>
-        <div class="property-detail-subtitle"><div class=" no-columns hierarchy_select_formatter hierarchy-select hf-property-location"><div class="field-item field-item-0"><div class="field-value">
-           <%=link_to @product.province, zone_products_path(:zone_id => @product.province_id)%>
-        </div></div></div>                 </div>
-      </div><!-- /.header-title -->
-    </div><!-- /.row -->
+
+         <div style = 'width: 90%;margin: 20px 60px; 0 60px;'>
+            <h4><%=@product.title%></h4>
+         </div>
+         <div style = 'width: 90%;margin-left: 60px; margin-right: 60px; position: relative; top: -10px;'>
+         <%=link_to @product.province, zone_products_path(:zone_id => @product.province_id), {:style => 'font-size: 14px;'}%>
+         </div>
+    </div>
+
     <%if @product.product_images.any? %>
-     <div class = "row">
-        <div class="col-md-12 image-show">
-           <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 660px; height: 300px;">
+     <div class = "row" style = 'margin-top: 10px;'>
+        <div class="col-lg-12 image-show">
+           <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 750px; height: 300px;margin: 0 auto;">
                 <!-- Slides Container -->
-                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 660px; height: 300px;">
+                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 750px; height: 300px;">
                     <%@product.product_images.each do |i|%>
                         <div>
                             <img u = "image" src ="<%=i.image.url%>" />
@@ -71,11 +72,11 @@
                         </div>
                     <%end%>
                 </div>
-                 <div u="thumbnavigator" class="jssort03" style="position: absolute; width: 660px; height: 60px; left:0px; bottom: 0px;">
+                 <div u="thumbnavigator" class="jssort03" style="position: absolute; width: 750px; height: 60px; left:0px; bottom: 0px;">
                         <div style=" background-color: #000; filter:alpha(opacity=30); opacity:.3; width: 100%; height:100%;">
                             
                         </div>
-                        <div u="slides" style="cursor: move;position: absolute; width: 660px; height: 60px; left:0px; bottom: 0px;">
+                        <div u="slides" style="cursor: move;position: absolute; width: 750px; height: 60px; left:0px; bottom: 0px;">
                             <div u="prototype" class="p" style="POSITION: absolute; WIDTH: 62px; HEIGHT: 32px; TOP: 0; LEFT: 0;">
                                 <div class="w"><ThumbnailTemplate style=" WIDTH: 100%; HEIGHT: 100%; border: none;position:absolute; TOP: 0; LEFT: 0;"></ThumbnailTemplate></div>
                                 <div class="c" style="POSITION: absolute; BACKGROUND-COLOR: #000; TOP: 0; LEFT: 0">
@@ -88,83 +89,85 @@
         </div>
     </div>
     <%end%>
-
-    <div class="row" style = "margin-top: 40px;">
-        <div class="col-md-4">
-            <div class=" table-group overview hf-property-overview">
-                    <h2>ข้อมูลที่ดิน</h2>
-                    <table id="hf-property-overview" class="table-formatter">
-                        <tbody>
-                            <tr class="even">
-                                <td class="item-label" style ='width:100px;'>
-                                    พื้นที่
-                                </td>
-                                <td class="item-value">
-                                    <%=@product.sqr_area.nil? ? "-" : @product.sqr_area%>       
-                                </td>
-                            </tr>
-                            <tr class="odd">
-                                <td class="item-label">
-                                     กว้าง         
-                                </td>
-                                <td class="item-value">
-                                    <%=@product.width.nil? ? "-" : @product.width%>          
-                                </td>
-                            </tr>
-                            <tr class="odd">
-                                <td class="item-label">
-                                     ลึก       
-                                </td>
-                                <td class="item-value">
-                                    <%=@product.depth.nil? ? "-" : @product.depth%>       
-                                </td>
-                            </tr>
-                            <tr class="odd">
-                                <td class="item-label">
-                                     ราคาขาย        
-                                </td>
-                                <td class="item-value">
-                                    <%=@product.sell_price.nil? ? "-" : @product.sell_price%>     
-                                </td>
-                            </tr>
-                            <tr class="odd">
-                                <td class="item-label">
-                                     ราคาที่ดิน         
-                                </td>
-                                <td class="item-value">
-                                    <%=@product.land_price.nil? ? "-" : @product.land_price%>      
-                                </td>
-                            </tr>
-                            <tr class="odd">
-                                <td class="item-label">
-                                     ค่าเช่า        
-                                </td>
-                                <td class="item-value">
-                                    <%=@product.rent_price.nil? ? "-" : @product.rent_price%>        
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </div>        
-        </div>
-        <div class="col-md-8">
-              <h2>รายละเอียด</h2>
-              <p>
-                  <%=@product.content%>
-              </p>
-        </div>
+   
+    <div class="row" style = "padding: 20px;">
+            <div class="col-lg-4">
+                <div class=" table-group overview hf-property-overview">
+                        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ข้อมูลที่ดิน</h4>
+                        <table id="hf-property-overview" style = 'width: 80%; margin: 10px auto;' class="table-formatter">
+                            <tbody>
+                                <tr class="even">
+                                    <td class="item-label" style ='width:100px;'>
+                                        พื้นที่
+                                    </td>
+                                    <td class="item-value">
+                                        <%=@product.sqr_area.nil? ? "-" : @product.sqr_area%>       
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="item-label">
+                                         กว้าง         
+                                    </td>
+                                    <td class="item-value">
+                                        <%=@product.width.nil? ? "-" : @product.width%>          
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="item-label">
+                                         ลึก       
+                                    </td>
+                                    <td class="item-value">
+                                        <%=@product.depth.nil? ? "-" : @product.depth%>       
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="item-label">
+                                         ราคาขาย        
+                                    </td>
+                                    <td class="item-value">
+                                        <%=@product.sell_price.nil? ? "-" : @product.sell_price%>     
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="item-label">
+                                         ราคาที่ดิน         
+                                    </td>
+                                    <td class="item-value">
+                                        <%=@product.land_price.nil? ? "-" : @product.land_price%>      
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td class="item-label">
+                                         ค่าเช่า        
+                                    </td>
+                                    <td class="item-value">
+                                        <%=@product.rent_price.nil? ? "-" : @product.rent_price%>        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>        
+            </div>
+            <div class="col-lg-8">
+                  <h4>รายละเอียด</h4>
+                  <p>
+                      <%=@product.content%>
+                  </p>
+            </div>
+        
     </div>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-8">
-            <h2>ติดต่อ</h2>
+
+    <div class="row" style = "padding: 20px;">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-8">
+            <h4>ติดต่อ</h4>
             <p>
                 <%=@product.contact%>
            </p>
         </div>
     </div> 
   </div>
-</div>
+
 <script>
     jQuery(document).ready(function ($) {
         var options = {

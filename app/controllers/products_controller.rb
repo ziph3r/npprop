@@ -22,7 +22,7 @@ class ProductsController < FrontendsController
 		@zones = Zone.all 
 		@products = Product.find_by_sql(sql)
 		@product_stars = Product.where(
-			"products.is_show = true and products.is_starred = true "
+			"products.is_show = true "
 		).order('updated_at desc').paginate(:page => params[:page])	
 
 	end

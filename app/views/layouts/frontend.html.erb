@@ -15,7 +15,7 @@
 		    <%=render :partial => '/header'%>
 		    <div class="content">
 		      <div class="content_bg">
-		      	 <%if params[:controller] != 'home'%>
+		      	 <%if params[:controller] == 'shome'%>
 		      	 	<div class="mainbar">
 		      	 		<div class="article">
 		      	 		  <%= yield %>

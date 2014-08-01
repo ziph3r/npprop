@@ -1,30 +1,41 @@
-<h3>ข่าวสาร</h3>
-<div id ='news-items'>
-	<%@newses.each do |news|%>
-			<div class ='news-item'>
-				<div class = "row">
-					<div class = "news-detail-img">
-						<%=link_to news_path(news) do %>
-							<img src="<%=news.image.file.url(:small)%>" />
-						<%end%>
-					</div>
-					<div class = "news-detail-content">
-						<div class = 'news-title pull-left'>
-							<%=link_to news.title, news_path(news) %>
-						</div>
-						<div class = 'news-date pull-right'>
-							<%=date_str(news.updated_at)%>
-						</div>
-						<div class ="clr"></div>
-						<div>
-							<p>
-								<%=news.content%>
-							</p>
-						</div>
-					</div>
+
+
+<div style='height:10px;'></div>
+<div class = 'divide-content'>
+	<div class = 'row'>
+		<h2>ข่าวสาร</h2>
+		<div class = 'col-lg-12'>
+			<div class = 'divide-content-inner'>
+				<div id ='news-items'>
+					<%@newses.each do |news|%>
+							<div class ='news-item'>
+								<!-- <div class = "row"> -->
+									<div class = "news-detail-img">
+										<%=link_to news_path(news), {:target => '_blank'} do %>
+											<img src="<%=news.image.file.url(:small)%>" />
+										<%end%>
+									</div>
+									<div class = "news-detail-content">
+										<div class = 'news-title pull-left'>
+											<%=link_to news_path(news), {:target => '_blank'} do %>
+												<%= news.title%>
+											<%end%>
+										</div>
+										<div class = 'news-date pull-right'>
+											<%=date_str(news.updated_at)%>
+										</div>
+										<div class ="clr"></div>
+										<div class = "news-p">
+												<%=news.content%>
+										</div>
+									</div>
+								<!-- </div> -->
+							</div>
+						
+					<%end%>
+					<%=will_paginate @newses%>
 				</div>
 			</div>
-		
-	<%end%>
-	<%=will_paginate @newses%>
+		</div>
+	</div>
 </div>

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  if Rails.env.production?
+    devise_for :users, :controllers => { :registrations => "registrations" } 
+  else
+    devise_for :users
+  end
+
   namespace :backend do 
     resources :products do 
     	post :image_upload, on: :member
@@ -24,5 +29,5 @@ Rails.application.routes.draw do
 
   resources :contacts, only: [:index, :create] 
 
-  root to: 'products#index'
+  root to: 'home#index'
 end

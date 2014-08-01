@@ -1,3 +1,13 @@
-<h3><%=@selected_province.name%></h3>
-<%=render :partial => '/tableitem', :locals => {:records => @product_stars}%>
-<%= will_paginate @product_stars %>
+<div style='height:10px;'></div>
+	<div class = 'divide-content'>
+		<div class = 'row'>
+			<h2>ที่ดิน<%=@selected_province.name%></h2>
+			<div class = 'col-lg-12'>
+				<div class = 'divide-content-inner'>
+					<%=render :partial => '/tableitem', :locals => {:records => @product_stars}%>
+					<%= will_paginate @product_stars %>
+				</div>
+			</div>
+		</div>
+	</div>
+

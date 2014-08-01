@@ -3,7 +3,7 @@
 %>
 <table id = "product-table">
 	<tbody>
-		<%records.each_slice(4) do |record|%>
+		<%records.each_slice(5) do |record|%>
 			<tr>
 			<%count = 1%>
 			<%record.each do |r|%>
@@ -15,29 +15,27 @@
 						 			<tr>
 						 				<td class = 'td-open' data-id = '<%=r.id%>'>
 						 					<div class = 'product-details-box'>
-						 						<%=link_to product_path(r) do %>
+						 						<%=link_to product_path(r), {:target => '_blank'} do %>
 						 						<div class = "product-img">
 							 						<%if r.product_images.any?%>
 							 							<img src = "<%=r.product_images.first.image.url(:thumb)%>" />
 							 						<%else%>
-							 							No Image
+							 							<div class = "default-img">
+							 								<%=image_tag('logo_np.png')%>
+							 							</div>
 							 						<%end%>
 							 					</div>
 							 					<%end%>
 						 						<div class = 'product-code'>
-							 						<%=link_to r.code, product_path(r)%>
+							 						<%=link_to product_path(r), {:target => '_blank'} do %>
+							 							<%=r.code%>
+							 						<%end%>
 							 					</div>
 							 					<div class = 'product-detail'>
 							 						<%=r.short_desc%>
 							 					</div>
 							 					<div class = 'product-price'>
-							 						<%if r.is_sell %>
-		                                                <%=r.land_price.nil? ? "สอบถามราคา" : r.land_price%>
-		                                            <%elsif r.is_hold %>
-		                                                ยังไม่ขาย
-		                                            <%else%>
-		                                                ขายแล้ว
-		                                            <%end%>
+							 						<%=r.web_price%>
 							 					</div>
 						 					</div>
 						 				</td>
@@ -49,7 +47,7 @@
 				</td>
 				<%count += 1%>
 			<%end%>
-			<%if count <= 4 && count != 1%>
+			<%if count <= 5 && count != 1%>
 				<%(4-count + 1).times do |t|%>
 					<td class = "product-table-block">
 						&nbsp;
