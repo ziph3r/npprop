@@ -26,7 +26,7 @@
 	top: -5px;
 }
 .gsc-control-cse {
-	background-color: rgba(81, 51, 135, -3) !important;
+	background-color: rgba(81, 51, 135, 0) !important;
 	border-color: transparent !important;
 }
 .gsc-control-cse div {
