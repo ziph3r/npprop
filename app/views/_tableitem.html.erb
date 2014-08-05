@@ -15,7 +15,7 @@
 						 			<tr>
 						 				<td class = 'td-open' data-id = '<%=r.id%>'>
 						 					<div class = 'product-details-box'>
-						 						<%=link_to product_path(r), {:target => '_blank'} do %>
+						 						<%=link_to product_path(r), {} do %>
 						 						<div class = "product-img">
 							 						<%if r.product_images.any?%>
 							 							<img src = "<%=r.product_images.first.image.url(:thumb)%>" />
@@ -27,7 +27,7 @@
 							 					</div>
 							 					<%end%>
 						 						<div class = 'product-code'>
-							 						<%=link_to product_path(r), {:target => '_blank'} do %>
+							 						<%=link_to product_path(r), {} do %>
 							 							<%=r.code%>
 							 						<%end%>
 							 					</div>

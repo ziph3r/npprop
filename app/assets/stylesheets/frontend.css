@@ -21,9 +21,12 @@
 	margin-top: 5px;
 	color: #513387;
 }
+.slogan span {
+	font-size: 16px;
+}
 .custom-search {
 	position: relative;
-	top: -5px;
+	top: 10px;
 }
 .gsc-control-cse {
 	background-color: rgba(81, 51, 135, 0) !important;
@@ -449,5 +452,8 @@ ul.collapsed li {
 }
 .alert-info .front-alert {
 	margin-bottom: 10px !important;
+}
+.height-set {
+	min-height: 500px;
 }
 

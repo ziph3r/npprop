@@ -11,13 +11,13 @@
 							<div class ='news-item'>
 								<!-- <div class = "row"> -->
 									<div class = "news-detail-img">
-										<%=link_to news_path(news), {:target => '_blank'} do %>
+										<%=link_to news_path(news), {} do %>
 											<img src="<%=news.image.file.url(:small)%>" />
 										<%end%>
 									</div>
 									<div class = "news-detail-content">
 										<div class = 'news-title pull-left'>
-											<%=link_to news_path(news), {:target => '_blank'} do %>
+											<%=link_to news_path(news), {} do %>
 												<%= news.title%>
 											<%end%>
 										</div>

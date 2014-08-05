@@ -46,7 +46,7 @@
                     -o-transition: none;
                 }
 </style>
-    <div style='height:10px;'></div>
+    <%=render :partial => '/zones'%>
     <div class = 'divide-content'>
     <div class="row">
 
@@ -61,9 +61,9 @@
     <%if @product.product_images.any? %>
      <div class = "row" style = 'margin-top: 10px;'>
         <div class="col-lg-12 image-show">
-           <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 750px; height: 300px;margin: 0 auto;">
+           <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 750px; height: 420px;margin: 0 auto;">
                 <!-- Slides Container -->
-                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 750px; height: 300px;">
+                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 750px; height: 420px;">
                     <%@product.product_images.each do |i|%>
                         <div>
                             <img u = "image" src ="<%=i.image.url%>" />
@@ -168,14 +168,15 @@
     </div> 
   </div>
 
-<script>
+<script type='text/javascript'>
     jQuery(document).ready(function ($) {
         var options = {
+            $FillMode: 1,
             $ThumbnailNavigatorOptions: {
                 $Class: $JssorThumbnailNavigator$,
                 $ChanceToShow: 2,
                 $ActionMode: 1,                               
-                $AutoCenter: 3,                                 
+                $AutoCenter: 3,                                  
                 $Lanes: 1,                                      
                 $SpacingX: 3,                                  
                 $SpacingY: 3,                                   
@@ -187,6 +188,8 @@
             }
         };
         var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+
+       
     });
 </script>
                         
