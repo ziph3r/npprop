@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :images
     resources :contacts
     resources :inboxes
+    resources :settings, :only => [:edit, :update]
     root to: 'products#index'
   end
 

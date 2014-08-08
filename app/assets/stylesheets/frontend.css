@@ -18,8 +18,11 @@
 .slogan {
 	font-size: 12px;
 	font-weight: bold;
-	margin-top: 5px;
 	color: #513387;
+	height: 60px;
+	max-height: 60px;
+	width: 320px;
+
 }
 .slogan span {
 	font-size: 16px;

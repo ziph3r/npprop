@@ -1,0 +1,58 @@
+<%if @setting.errors.any? %>
+            <div class = "row alert alert-danger">
+              <h4>ไม่สามารถบันทึกได้เนื่องจาก:</h4>
+              <ul id = "error-list">
+                <% @setting.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+          </div>
+<%end%>	  
+<div class ='row'>
+	<div class ='col-lg-10'>
+		<div class="form-group">
+		    	<label for="setting_slogan"> 1 Header : สโลแกน (ข้างโลโก้ ความยาวไม่เกิน 255 ตัวอักษร)</label>
+		    	<%=f.text_field :slogan, {:class => 'form-control', :style => 'width: 100%;'}%>
+		  </div>
+	</div>
+</div>
+<div class ='row'>
+	<div class ='col-lg-12'>
+		 <div class="form-group">
+		    	<label for="setting_contact_us_footer"> 2 Footer : Contact us</label>
+		    	<%=f.text_area :contact_us_footer, {:class => 'form-control', :style => 'height: 100px;'}%>
+		  </div>
+	</div>
+</div>
+<div class ='row'>
+	<div class ='col-lg-12'>
+		 <div class="form-group">
+		    	<label for="setting_contact_us"> 3(1) Contact Us Page : เนื้อหา</label>
+		    	<%=f.text_area :contact_us, {:class => 'form-control', :style => 'height: 100px;'}%>
+		  </div>
+	</div>
+</div>
+<div class ='row'>
+	<div class ='col-lg-10'>
+		<div class="form-group">
+		    	<label for="setting_address"> 3(2) Contact us Page : ที่อยู่</label>
+		    	<%=f.text_field :address, {:class => 'form-control', :style => 'width: 100%;'}%>
+		  </div>
+	</div>
+</div>
+<div class ='row'>
+	<div class ='col-lg-10'>
+		<div class="form-group">
+		    	<label for="setting_call_us"> 3(3) Contact us Page : เบอร์โทร</label>
+		    	<%=f.text_field :call_us, {:class => 'form-control', :style => 'width: 100%;'}%>
+		  </div>
+	</div>
+</div>
+<div class ='row'>
+	<div class ='col-lg-10'>
+		<div class="form-group">
+		    	<label for="setting_email"> 3(4) Contact us Page : อีเมล์</label>
+		    	<%=f.text_field :email, {:class => 'form-control', :style => 'width: 100%;'}%>
+		  </div>
+	</div>
+</div>

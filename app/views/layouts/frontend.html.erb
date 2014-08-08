@@ -10,6 +10,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<%
+		@setting = Setting.first
+		@setting = Setting.new if @setting.nil?
+	%>
 	<div class="main">
 		<div class="main_resize">
 		    <%=render :partial => '/header'%>
