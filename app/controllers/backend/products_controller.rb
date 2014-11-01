@@ -108,6 +108,7 @@ class Backend::ProductsController < ApplicationController
 			:sell_price,
 			:land_price,
 			:rent_price,
+			:search_price,
 			:is_show,
 			:product_status_master_id,
 			:contact_id,

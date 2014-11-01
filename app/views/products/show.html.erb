@@ -1,194 +1,232 @@
-<!-- Thumbnail Item Skin Begin -->
-            <style>
-                /* jssor slider thumbnail navigator skin 03 css */
-                /*
-                .jssort03 .p            (normal)
-                .jssort03 .p:hover      (normal mouseover)
-                .jssort03 .pav          (active)
-                .jssort03 .pav:hover    (active mouseover)
-                .jssort03 .pdn          (mousedown)
-                */
-                .jssort03 .w, .jssort03 .pav:hover .w
-                {
-                    position: absolute;
-                    width: 60px;
-                    height: 30px;
-                    border: white 1px dashed;
-                }
-                * html .jssort03 .w
-                {
-                    width /**/: 62px;
-                    height /**/: 32px;
-                }
-                .jssort03 .pdn .w, .jssort03 .pav .w { border: 1px solid #F03203; }
-                .jssort03 .c
-                {
-                    width: 62px;
-                    height: 32px;
-                    filter:  alpha(opacity=45);
-                    opacity: .45;
-                    
-                    transition: opacity .6s;
-                    -moz-transition: opacity .6s;
-                    -webkit-transition: opacity .6s;
-                    -o-transition: opacity .6s;
-                }
-                .jssort03 .p:hover .c, .jssort03 .pav .c
-                {
-                    filter:  alpha(opacity=0);
-                    opacity: 0;
-                }
-                .jssort03 .p:hover .c
-                {
-                    transition: none;
-                    -moz-transition: none;
-                    -webkit-transition: none;
-                    -o-transition: none;
-                }
-</style>
-    <%=render :partial => '/zones'%>
-    <div class = 'divide-content'>
-    <div class="row">
-
-         <div style = 'width: 90%;margin: 20px 60px; 0 60px;'>
-            <h4><%=@product.title%></h4>
-         </div>
-         <div style = 'width: 90%;margin-left: 60px; margin-right: 60px; position: relative; top: -10px;'>
-         <%=link_to @product.province, zone_products_path(:zone_id => @product.province_id), {:style => 'font-size: 14px;'}%>
-         </div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 breadcrumb_container">
+            <div style="height:30px;"></div>
     </div>
-
-    <%if @product.product_images.any? %>
-     <div class = "row" style = 'margin-top: 10px;'>
-        <div class="col-lg-12 image-show">
-           <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 750px; height: 420px;margin: 0 auto;">
-                <!-- Slides Container -->
-                <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 750px; height: 420px;">
-                    <%@product.product_images.each do |i|%>
-                        <div>
-                            <img u = "image" src ="<%=i.image.url%>" />
-
-                            <img u="thumb" src="<%=i.image.url(:thumb)%>" />
-                        </div>
-                    <%end%>
-                </div>
-                 <div u="thumbnavigator" class="jssort03" style="position: absolute; width: 750px; height: 60px; left:0px; bottom: 0px;">
-                        <div style=" background-color: #000; filter:alpha(opacity=30); opacity:.3; width: 100%; height:100%;">
-                            
-                        </div>
-                        <div u="slides" style="cursor: move;position: absolute; width: 750px; height: 60px; left:0px; bottom: 0px;">
-                            <div u="prototype" class="p" style="POSITION: absolute; WIDTH: 62px; HEIGHT: 32px; TOP: 0; LEFT: 0;">
-                                <div class="w"><ThumbnailTemplate style=" WIDTH: 100%; HEIGHT: 100%; border: none;position:absolute; TOP: 0; LEFT: 0;"></ThumbnailTemplate></div>
-                                <div class="c" style="POSITION: absolute; BACKGROUND-COLOR: #000; TOP: 0; LEFT: 0">
+    <div class="col-sm-12 col-md-12">
+        <div class="single-content">
+            <div class="vc_row wpb_row vc_row-fluid vc_custom_1401619113429 vc_row">
+               <div class="vc_col-sm-12 col-md-12 wpb_column vc_column_container vc_column">
+                  <div class="wpb_wrapper">
+                    <div class="article_container bottom-estate_property nobutton" id = 'products-list'>
+                        <div class=" col-md-9 " style = 'margin-top: 20px;'>
+                                <div class="spinner" id="listing_loader">
+                                  <div class="rect1"></div>
+                                  <div class="rect2"></div>
+                                  <div class="rect3"></div>
+                                  <div class="rect4"></div>
+                                  <div class="rect5"></div>
                                 </div>
-                            </div>
+
+                                <div id="listing_ajax_container">
+
+                                </div>
+
+                                <h1 class="entry-title entry-prop"><%=@product.title%></h1>
+                                <span class="price_area"><%=@product.code%> </span>
+                                <div class="single-content listing-content">
+                                    <div class="notice_area">
+                                        <span class="adres_area">
+                                            <%=@product.province%>
+                                        </span>
+                                    </div>
+                                    <div id="carousel-listing" class="carousel slide post-carusel" data-ride="carousel" data-interval="false">
+
+                                        <div class="carousel-inner">
+                                            <%@product.product_images.each do |image|%>
+                                                <div class="item <%=(image == @product.product_images.first) ? 'active' : ''%>">
+                                                    <%=link_to image.image.url(:original) do %>
+                                                         <img class = 'img-responsive' src="<%=image.image.url(:large)%>" />
+                                                     <%end%>
+                                                </div>
+                                            <%end%>
+                                        </div>
+
+
+                                        <div class="carusel-back"></div>
+                                        <ol class="carousel-indicators">
+                                            <%@product.product_images.each_with_index do |image, index|%>
+                                                 <li data-target="#carousel-listing" data-slide-to="<%=index%>" class="<%=(image == @product.product_images.first) ? 'active' : ''%>">
+                                                    <img src="<%=image.image.url(:thumb)%>" alt="slider">
+                                               </li>
+                                            <%end%>
+                                         </ol>
+
+                                        <ol class="carousel-round-indicators">
+                                            <%@product.product_images.each_with_index do |image, index|%>
+                                                <li data-target="#carousel-listing" data-slide-to="<%=index%>" class="<%=(image == @product.product_images.first) ? 'active' : ''%>"></li>
+                                            <%end%>
+                                        </ol>
+
+                                        <div class="caption-wrapper">
+                                            <%@product.product_images.each_with_index do |image, index|%>
+                                                <span data-slide-to="<%=index%>" class="<%=(image == @product.product_images.first) ? 'active' : ''%>">
+                                                    <%=@product.title%>
+                                                </span>
+                                            <%end%>
+                                        </div>
+
+
+                                        <a class="left carousel-control" href="#carousel-listing" data-slide="prev">
+                                          <i class="fa fa-angle-left"></i>
+                                        </a>
+                                        <a class="right carousel-control" href="#carousel-listing" data-slide="next">
+                                          <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+
+                                    <p>
+                                        <%=@product.content%>
+                                    </p>
+                                    <p>
+                                        <%=@product.contact%>
+                                    </p>
+                                    <div class="panel-group property-panel" id="accordion_prop_details">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                 <a data-toggle="collapse" data-parent="#accordion_prop_details" href="#collapseOne"><h4 class="panel-title" id="prop_det">รายละเอียดที่ดิน   </h4></a>                    </div>
+                                            <div id="collapseOne" class="panel-collapse collapse in">
+                                                  <div class="panel-body">
+                                                    <div class="listing_detail col-md-6">
+                                                        <strong>พื้นที่:</strong>  <%=@product.sqr_area.nil? ? "-" : @product.sqr_area%>
+                                                    </div>
+                                                    <div class="listing_detail col-md-6">
+
+                                                    </div>
+                                                    <div class="listing_detail col-md-6">
+                                                        <strong>ราคาขาย :</strong>  <%=@product.sell_price.nil? ? "-" : @product.sell_price%>
+                                                    </div>
+                                                    <div class="listing_detail col-md-6">
+                                                        <strong>กว้าง:</strong> <%=@product.width.nil? ? "-" : @product.width%>
+                                                    </div>
+                                                    <div class="listing_detail col-md-6">
+
+                                                    </div>
+                                                    <div class="listing_detail col-md-6">
+                                                        <strong>ราคาที่ดิน:</strong> <%=@product.land_price.nil? ? "-" : @product.land_price%>
+                                                    </div>
+                                                    <div class="listing_detail col-md-6">
+                                                        <strong>ลึก:</strong>  <%=@product.depth.nil? ? "-" : @product.depth%>
+                                                    </div>
+                                                    <div class="listing_detail col-md-6">
+
+                                                    </div>
+                                                    <div class="listing_detail col-md-6">
+                                                        <strong>ค่าเช่า :</strong> <%=@product.rent_price.nil? ? "-" : @product.rent_price%>
+                                                    </div>
+
+                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="panel-group property-panel" id="accordion_prop_messages">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                         <a data-toggle="collapse" data-parent="#accordion_prop_message" href="#collapseTwo">
+                                                         <h4 class="panel-title" id="prop_det">ส่งข้อความ   </h4></a>
+                                                    </div>
+                                                    <div id="collapseTwo" class="panel-collapse collapse in">
+                                                        <div class="alert-box error" id = 'message-results'>
+
+                                                        </div>
+                                                        <%=form_for @inbox, :url => message_product_path(@product), :html => {}, :remote => true do |f|%>
+                                                                <div class="col-md-12" style= 'margin-bottom: 10px; margin-top:10px;'>
+                                                                    <div class="control-group">
+                                                                         <div>
+                                                                            <label class="control-label">ชื่อเรื่อง<span class="form-required" title="This field is required.">*</span></label>
+                                                                        </div>
+                                                                        <div class="controls">
+
+                                                                               <%=f.text_field :title, {:style => 'width:100%;', :class => 'form-control'}%>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12" style= 'margin-bottom: 10px;'>
+                                                                    <div class="control-group">
+                                                                         <div>
+                                                                            <label class="control-label">ชื่อผู้ส่ง<span class="form-required" title="This field is required.">*</span></label>
+                                                                        </div>
+                                                                        <div class="controls">
+                                                                               <%=f.text_field :sender, {:style => 'width:100%;', :class => 'form-control'}%>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12" style= 'margin-bottom: 10px;'>
+                                                                    <div class="control-group">
+                                                                         <div>
+                                                                            <label class="control-label">อีเมล์<span class="form-required" title="This field is required.">*</span></label>
+                                                                        </div>
+                                                                        <div class="controls">
+
+                                                                               <%=f.text_field :email, {:style => 'width:100%;', :class => 'form-control'}%>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12" style= 'margin-bottom: 10px;'>
+                                                                    <div class="control-group">
+                                                                         <div>
+                                                                            <label class="control-label">เบอร์ติดต่อ</label>
+                                                                        </div>
+                                                                        <div class="controls">
+
+                                                                               <%=f.text_field :phone, {:style => 'width:100%;', :class => 'form-control'}%>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12" style= 'margin-bottom: 10px;'>
+                                                                    <div class="control-group">
+                                                                         <div>
+                                                                            <label class="control-label">ข้อความ<span class="form-required" title="This field is required.">*</span></label>
+                                                                        </div>
+                                                                        <div class="controls">
+
+                                                                               <%=f.text_area :message, {:style => 'width:100%;height:100px;', :class => 'form-control'}%>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-12">
+                                                                    <input type="submit" class="wpb_button  wpb_btn-info wpb_btn-large" id="agent_submit" value="ส่งข้อความ">
+                                                                </div>
+
+                                                        <%end%>
+                                                    </div>
+                                                </div>
+                                    </div>
+
+                                </div>
+
                         </div>
-                        <!-- Thumbnail Item Skin End -->
+                    </div>
+                   </div>
                 </div>
             </div>
         </div>
     </div>
-    <%end%>
-   
-    <div class="row" style = "padding: 20px;">
-            <div class="col-lg-4">
-                <div class=" table-group overview hf-property-overview">
-                        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ข้อมูลที่ดิน</h4>
-                        <table id="hf-property-overview" style = 'width: 80%; margin: 10px auto;' class="table-formatter">
-                            <tbody>
-                                <tr class="even">
-                                    <td class="item-label" style ='width:100px;'>
-                                        พื้นที่
-                                    </td>
-                                    <td class="item-value">
-                                        <%=@product.sqr_area.nil? ? "-" : @product.sqr_area%>       
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="item-label">
-                                         กว้าง         
-                                    </td>
-                                    <td class="item-value">
-                                        <%=@product.width.nil? ? "-" : @product.width%>          
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="item-label">
-                                         ลึก       
-                                    </td>
-                                    <td class="item-value">
-                                        <%=@product.depth.nil? ? "-" : @product.depth%>       
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="item-label">
-                                         ราคาขาย        
-                                    </td>
-                                    <td class="item-value">
-                                        <%=@product.sell_price.nil? ? "-" : @product.sell_price%>     
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="item-label">
-                                         ราคาที่ดิน         
-                                    </td>
-                                    <td class="item-value">
-                                        <%=@product.land_price.nil? ? "-" : @product.land_price%>      
-                                    </td>
-                                </tr>
-                                <tr class="odd">
-                                    <td class="item-label">
-                                         ค่าเช่า        
-                                    </td>
-                                    <td class="item-value">
-                                        <%=@product.rent_price.nil? ? "-" : @product.rent_price%>        
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>        
-            </div>
-            <div class="col-lg-8">
-                  <h4>รายละเอียด</h4>
-                  <p>
-                      <%=@product.content%>
-                  </p>
-            </div>
-        
-    </div>
-
-    <div class="row" style = "padding: 20px;">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-8">
-            <h4>ติดต่อ</h4>
-            <p>
-                <%=@product.contact%>
-           </p>
-        </div>
-    </div> 
-  </div>
-
-<script type='text/javascript'>
-    jQuery(document).ready(function ($) {
-        var options = {
-            $FillMode: 1,
-            $ThumbnailNavigatorOptions: {
-                $Class: $JssorThumbnailNavigator$,
-                $ChanceToShow: 2,
-                $ActionMode: 1,                               
-                $AutoCenter: 3,                                  
-                $Lanes: 1,                                      
-                $SpacingX: 3,                                  
-                $SpacingY: 3,                                   
-                $DisplayPieces: 9,                              
-                $ParkingPosition: 260,                         
-                $Orientation: 1,                                
-                $DisableDrag: false  
+</div>
+<script type="text/javascript">
+     $(document).ready(function() {
+         // jQuery('#adv-search-1').removeClass('adv-search-1-close');
+        $('#adv-search-header-1').click(function(){
+            if( document.getElementById("adv_extended_options_text_adv") !== null ) {
+                 $(this).parent().toggleClass('adv-search-1-close-extended');
+            }else{
+                 $(this).parent().toggleClass('adv-search-1-close');
             }
-        };
-        var jssor_slider1 = new $JssorSlider$('slider1_container', options);
 
-       
-    });
+
+        })
+
+     })
 </script>
-                        

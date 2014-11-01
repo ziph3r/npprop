@@ -1,0 +1,1 @@
+$("#news-table").hide().html("<%= escape_javascript(render partial: 'news_table', locals: { newses: @newses } ) %>").fadeIn('slow'); 

@@ -25,14 +25,14 @@
 	</div>
 </div>		
 <div class ='row'>
-	<div class ='col-lg-6'>
+	<div class ='col-lg-4'>
 		<div class="form-group">
 		    	<label for="product_zone_id">ภาค</label>
 		    	<%=f.select :zone_id, Zone.all.map{ |z| [z.name, z.id]},{}, {:class => 'form-control'}%>
 		  </div>
 	</div>
 	<div class ='row'>
-		<div class ='col-lg-6'>
+		<div class ='col-lg-4'>
 				<label for="product_province_id">จังหวัด</label>
 		    	<%=f.select :province_id, Province.all.map{ |z| [z.name, z.id]},{}, {:class => 'form-control'}%>
 		</div>
@@ -91,6 +91,12 @@
 		 <div class="form-group">
 		    	<label for="product_rent_price">ราคาเช่า</label>
 		    	<%=f.text_field :rent_price, {:class => 'form-control'}%>
+		  </div>
+	</div>
+	<div class ='col-lg-4'>
+		 <div class="form-group">
+		    	<label for="product_rent_price">ราคา (ใช้สำหรับการค้นหา)</label>
+		    	<%=f.text_field :search_price, {:class => 'form-control'}%>
 		  </div>
 	</div>
 </div>

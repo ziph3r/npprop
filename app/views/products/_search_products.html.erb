@@ -1,0 +1,4 @@
+<h2 class="shortcode_title">ผลการค้นหา</h2>  
+<%@products.each do |p| %>
+	<%=render :partial => '/products/product_detail', :locals => {:product => p}%>
+<%end%>

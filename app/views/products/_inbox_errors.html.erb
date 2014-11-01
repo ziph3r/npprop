@@ -1,0 +1,15 @@
+<ul id = "error-list" style = ''>
+	<%if @inbox.errors.any? %>
+	    <% @inbox.errors.full_messages.each do |msg| %>
+	      <li class ='error'><%= msg %></li>
+	    <% end %>
+	<%else%>
+		 <li class ='success'>ข้อความของท่านถูงส่งให้ทีมงานแล้ว</li>
+		 <script type="text/javascript">
+		 	$(document).ready(function() {
+
+		 		$('#new_inbox')[0].reset();
+		 	})
+		 </script>
+	<%end%>
+</ul>

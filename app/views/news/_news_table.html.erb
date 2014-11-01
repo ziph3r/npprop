@@ -1,0 +1,16 @@
+<h2 class="entry-title title_prop">ข่าวสาร</h2>
+        <div class="single-content">
+    <p class="category-description" style="color: #4b4b4b;">
+      ข่าวสารจาก NP Property
+    </p>
+  </div>
+  <div class="blog_list_wrapper">
+      <%@newses.each do |n|%>
+        <%=render :partial => 'news_details', :locals => {:news => n}%>
+      <%end%>
+  </div>
+  <!-- paging-->
+<!--    <ul class="pagination pagination_nojax"><li class="roundleft"><a href="http://wpresidence.net/blog-list/"><i class="fa fa-angle-left"></i></a></li><li class="active"><a href="http://wpresidence.net/blog-list/">1</a></li><li></li><li><a href="http://wpresidence.net/blog-list/page/2/">2</a></li><li></li><li class="roundright"><a href="http://wpresidence.net/blog-list/page/2/"><i class="fa fa-angle-right"></i></a></li><li></li></ul>   -->
+<div class ='col-xs-12' style ='font-size: 14px;'>
+  <%=will_paginate @newses%>
+</div>

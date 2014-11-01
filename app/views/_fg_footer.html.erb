@@ -1,9 +1,29 @@
-<div class="fbg">
-    <div class="fbg_resize">
-      <div class="col">
-        <h2><span>Contact Us</span></h2>
-        <p> <%=@setting.contact_us_footer%> <%=link_to "ส่งข้อความถึงเรา", contacts_url, :style => "color: #F47920; font-weight: bold;"%></p>
-      </div>
-
-      <div class="clr"></div>
-</div>
+<footer id="colophon" role="contentinfo">    
+    <div id="footer-widget-area" class="row">
+	    <div id="second" class="widget-area col-md-12">
+	        <ul class="xoxo" style ='padding-top:15px;'>
+	        	<li id="contact_widget-2" class="widget-container contact_sidebar" style='margin-bottom:10px;'>
+	        		<h3 class="widget-title-footer">ติดต่อเรา</h3>
+	        		<div class="contact_sidebar_wrap">
+	        			<p class="widget_contact_addr">
+	        				<i class="fa fa-building-o"></i>&nbsp; 161/30 ซ.บุญช่วย ถ.พระราม 6 พญาไท กรุงเทพมหาคาร 10400
+	        			</p>
+	        			<p class="widget_contact_phone">
+	        				<i class="fa fa-phone"></i>
+	        				<a href="#">081-261-1329</a>
+	        			</p>
+	        			<p class="widget_contact_email"><i class="fa fa-envelope-o"></i><a href="mailto:annapx0909@gmail.com">&nbsp;wac_01@hotmail.com</a>
+	        			</p>
+	        			<p class="widget_contact_email"><i class="fa fa-envelope-o"></i>
+	        				<%=link_to "ส่งข้อความถีงเรา", contacts_path%>
+	        			</p>
+	        			<!-- <p class="widget_contact_skype"><i class="fa fa-skype"></i>wpestatetheme
+	        			</p>
+	        			<p class="widget_contact_url"><i class="fa fa-desktop"></i><a href="http://wpresidence.net/">WP RESIDENCE</a>
+	        			</p> -->
+	        		</div>
+	        	</li>        
+	        </ul>
+	    </div><!-- #second .widget-area -->
+    </div><!-- #footer-widget-area -->
+</footer><!-- #colophon -->

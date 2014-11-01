@@ -1,0 +1,47 @@
+<div class="col-sm-3 shortcode-col listing_wrapper" data-org="3"> 
+	<div class="property_listing" data-link="<%=product_url(product)%>">
+		<div class="listing-unit-img-wrapper">
+			<%=link_to product_path(product) do %>
+                <%if product.product_images.any?%>
+                    <img width="265" height="163" src="<%=product.product_images.first.image.url(:thumb)%>" class="lazyload img-responsive wp-post-image" alt="<%=product.code%>" data-original="<%=product.product_images.first.image.url(:thumb)%>">
+                <%else%>
+                    <div style ='height: 40px;'></div>
+                <%end%>
+				
+			<%end%>
+			<div class="listing-cover"></div>
+           <!--  <a href="http://wpresidence.net/properties/user-submitted-property/"> <span class="listing-cover-plus">+</span></a> -->
+            <div class="featured_div"></div>
+        </div>
+        <%if product.is_starred%>
+    	<a href="http://wpresidence.net/properties/user-submitted-property/">
+    		<div class="ribbon-wrapper-default ribbon-wrapper-new-offer">
+    			<div class="ribbon-inside new-offer">ที่ดินเด่น</div>
+    		</div>
+    	</a>
+		<%end%>							  
+        <h4> <%=link_to product.title, product_path(product) %> </h4>
+       <!--  <div class="property_location">                 
+        	<span class="inforoom">5</span>
+        	<span class="infobath">5</span> 
+        	<span class="infosize">1,500 ft<sup>2</sup></span>            
+        </div> -->
+										                  
+        <div class="listing_details the_grid_view" >
+			<%=product.short_desc[0..150]%>             
+		</div>
+
+        <div class="listing_details the_list_view" >
+            <%=product.short_desc[0..150]%>              
+        </div>
+										               
+										       
+        <div class="listing_prop_details">
+            
+        </div>
+										            
+        <div class="listing_unit_price_wrapper" style = 'text-align:center;'>                        
+        	  <%=product.web_price%>      
+		</div>          
+	</div>  
+</div>

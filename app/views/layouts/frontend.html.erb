@@ -2,47 +2,108 @@
 <html>
 <head>
   <title>NP Property</title>
+  <meta id="Viewport" name="viewport" width="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'bootstrap/bootstrap.css', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'frontend.css', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'frontend/style.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= stylesheet_link_tag    'bootstrap/bootstrap.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= stylesheet_link_tag    'frontend.css', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= stylesheet_link_tag    'frontend/style.css', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-	<%
-		@setting = Setting.first
-		@setting = Setting.new if @setting.nil?
-	%>
-	<div class="main">
-		<div class="main_resize">
-		    <%=render :partial => '/header'%>
-		    <div class="content">
-		      <div class="content_bg">
-		      	 <%if params[:controller] == 'shome'%>
-		      	 	<div class="mainbar">
-		      	 		<div class="article">
-		      	 		  <%= yield %>
-						</div>					
+<body class="home page page-id-201 page-template-default wpb-js-composer js-comp-ver-4.3.3 vc_responsive">
+	<div class="website-wrapper">
+		<div class="container main_wrapper wide">
+			<div class="master_header wide">
+				<div class="top_bar_wrapper">
+				    <div class="top_bar">        
+				        <div class="left-top-widet">
+				            <ul class="xoxo">
+					            <li id="text-5" class="widget-container widget_text">			<div class="textwidget">
+					            		<i class="fa fa-phone"></i>081-261-1329
+					            	</div>
+								</li>
+								<li id="text-4" class="widget-container widget_text">			<div class="textwidget">
+										<i class="fa fa-envelope-o"></i> wac_01@hotmail.com
+									</div>
+								</li>            
+							</ul>    
+				        </div>  
+
+				        <div class="right-top-widet">
+				            <ul class="xoxo">
+				            <li id="social_widget_top-2" class="widget-container social_sidebar"><div class="social_sidebar_internal"><a href="#" target="_blank"><div class="social-facebook"></div></a><a href="#" target="_blank"><div class="social-twitter"></div></a></li>            </ul>
+				        </div> 
+				    </div>    
+				</div>
+				<div class="header_wrapper">
+            		<div class="header_wrapper_inside">
+            			<div class="logo">
+		                    <a href="http://npproperty.net">
+		                     <!--    <img src="http://wpresidence.net/wp-content/uploads/2014/06/logo_v21_4648511896240f81ab5317d392c46de8.png" class="img-responsive" alt="logo"> --> 
+		                        <%=image_tag('logo_np.png', :class => 'img-responsive', :alt => 'logo')%>                   
+		                    </a>
+		                </div>  
+		                <nav id="access" role="navigation">
+					    	<div class="menu-main-menu-container">
+					    		 <%
+							          name = params[:controller]
+							     %>
+					    		<ul id="menu-main-menu" class="menu">
+					    			<li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-17 <%=name == "products" ? "current-menu-item current_page_item" : ""%>">
+					    				 <%=link_to "รายการที่ดิน", products_path%>
+					    			</li>
+					    			<li id="menu-item-19" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-19 <%=name == "news" ? "current-menu-item current_page_item" : ""%>">
+					    				<%=link_to "ข่าวสาร", news_index_path%>
+					    			</li>
+					    			<li id="menu-item-18" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-18 <%=name == "contacts" ? "current-menu-item current_page_item" : ""%>">
+					    				 <%=link_to "ติดต่อเรา", contacts_path%>
+					    			</li>
+					    		</ul>
+					    	</div>
+				    	</nav>
+            		</div>
+            		
+				    
+            	</div>
+			</div>
+			<%if name != "disabled"%>
+				<div class = "row" style ='margin: 0 auto; margin-top: 10px;'> 
+					<div class="header_media">
+						<div id="gmap_wrapper" data-post_id="201" data-cur_lat="" data-cur_long="" style="height:280px;max-width:1200px;margin: 0 auto;">
+							<img src='/assets/widescreen-wallpaper.jpg' style = 'height:280px; width:100%;'>
+		   			 	</div>        
+						<div class="search_wrapper fullscreen_search_open" id="search_wrapper">   
+							<div class="adv-search-1  adv_extended_class adv-search-1-close" id="adv-search-1" data-postid="201"> 
+							    <div id="adv-search-header-1"> ค้นหาที่ดิน</div>   
+							   	<%=form_for :search, :url => search_products_path, :html => {:class => 'form-inline'}, :remote => true do |f| %>  
+							        <div class="adv1-holder">
+
+					                      <%=f.select :zone_id, [["ทุกภาค", 0]] + Zone.all.collect{|z| [z.name, z.id]},{}, {:class => 'form-control'}%>
+					                      <%=f.select :province_id, [["ทุกจังหวัด", 0]] + Province.all.collect{|z| [z.name, z.id]},{}, {:class => 'form-control'}%>
+					                     <%=f.text_field :min_price, {:class => 'form-control', :placeholder => 'ราคาต่ำสุด'}%>
+					                     <%=f.text_field :max_price, {:class => 'form-control', :placeholder => 'ราคาสูงสุด'}%>
+					                     <%=f.text_field :area, {:class => 'form-control', :placeholder => 'เนื้อที่'}%>
+					                     <%=f.text_field :keyword, {:class => 'form-control', :placeholder => 'คำสำคัญ', :style => 'width: 300px;'}%>
+							        </div>
+							        <%=f.submit "ค้นหา", {:class => 'wpb_button  wpb_btn_adv_submit wpb_btn-large', :id => 'advanced_submit_2'}%>
+							       
+							     
+							              
+							        <div id="results">
+							            We found  <span id="results_no">0</span> results.  
+							            <span id="showinpage"> Do you want to load the results now ? </span>
+							        </div>
+
+							    <%end%>   
+							</div>       
+						</div><!-- end search wrapper--> 
+					<!-- END SEARCH CODE -->   
 					</div>
-					<%=render :partial => '/sidebar'%>
-					<div class="clr"></div>
-		      	 <%else%>
-		      	 	 <%= yield %>
-		      	 <%end%>		        
-				<div class="clr"></div>
-			  </div>
+				</div>
+			<%end%>
+			<div class ="container content_wrapper" style = 'min-height: 500px;'>
+				<%= yield %>
 			</div>
 			<%=render :partial => '/fg_footer'%>
-		</div>
-	</div>
-	<div class="footer">
-	  <div class="footer_resize">
-	    <p class="lf">&copy; Copyright <a href="#">-</a>.</p>
-	    <p class="rf">Layout by Rocket <a href="http://www.rocketwebsitetemplates.com/">Website Templates</a></p>
-	    <div class="clr"></div>
-	  </div>
-	</div>
-</div>
 </body>
 </html>

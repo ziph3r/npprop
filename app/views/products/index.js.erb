@@ -1,0 +1,1 @@
+$("#products-list").hide().html("<%= escape_javascript(render partial: 'search_products', locals: { products: @product } ) %>").fadeIn('slow'); 

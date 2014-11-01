@@ -13,6 +13,13 @@
 		<h5><%=date_str(@message.created_at)%></h5>
 	</div>
 </div>
+<%if @message.product%>
+<div class = 'row'>
+	<div class ='col-lg-12'>
+		<h5>อ้างถึง: <%=link_to @message.product.title, backend_product_path(@message.product) %></h5>
+	</div>
+</div>
+<%end%>
 <div style='clear:both;height:40px;'></div>
 <div class = 'row'>
 	<div class ='col-lg-12'>

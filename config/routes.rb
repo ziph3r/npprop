@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
-  
+
+  # Mercury::Engine.routes
   if Rails.env.production?
-    devise_for :users, :controllers => { :registrations => "registrations" } 
+    devise_for :users, :controllers => { :registrations => "registrations" }
   else
     devise_for :users
   end
 
-  namespace :backend do 
-    resources :products do 
+  namespace :backend do
+    resources :products do
     	post :image_upload, on: :member
     	delete :remove_image, on: :member
       get :upload, on: :member
     	# get :search, on: :collection
     end
-    resources :news
+    resources :news do
+      member { post :mercury_update}
+    end
+
     resources :images
     resources :contacts
     resources :inboxes
@@ -22,13 +26,17 @@ Rails.application.routes.draw do
   end
 
   resources :home, :only => [:index]
-  resources :products, only: [:index, :show] do 
+  resources :products, only: [:index, :show] do
     get 'zones/:zone_id' => 'products#zone', on: :collection, as: :zone
+    post 'search' => 'products#index', on: :collection
+    post 'message' => 'products#message', on: :member
   end
 
-  resources :news, only: [:index, :show] 
+  resources :news, only: [:index, :show] do
+    post 'search'=> 'news#index', on: :collection
+  end
 
-  resources :contacts, only: [:index, :create] 
+  resources :contacts, only: [:index, :create]
 
-  root to: 'home#index'
+  root to: 'products#index'
 end
