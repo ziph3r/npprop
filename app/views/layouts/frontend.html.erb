@@ -15,7 +15,7 @@
 		<div class="container main_wrapper wide">
 			<div class="master_header wide">
 				<div class="top_bar_wrapper">
-				    <div class="top_bar">        
+				    <div class="top_bar">
 				        <div class="left-top-widet">
 				            <ul class="xoxo">
 					            <li id="text-5" class="widget-container widget_text">			<div class="textwidget">
@@ -25,24 +25,24 @@
 								<li id="text-4" class="widget-container widget_text">			<div class="textwidget">
 										<i class="fa fa-envelope-o"></i> wac_01@hotmail.com
 									</div>
-								</li>            
-							</ul>    
-				        </div>  
+								</li>
+							</ul>
+				        </div>
 
 				        <div class="right-top-widet">
 				            <ul class="xoxo">
 				            <li id="social_widget_top-2" class="widget-container social_sidebar"><div class="social_sidebar_internal"><a href="#" target="_blank"><div class="social-facebook"></div></a><a href="#" target="_blank"><div class="social-twitter"></div></a></li>            </ul>
-				        </div> 
-				    </div>    
+				        </div>
+				    </div>
 				</div>
 				<div class="header_wrapper">
             		<div class="header_wrapper_inside">
             			<div class="logo">
 		                    <a href="http://npproperty.net">
-		                     <!--    <img src="http://wpresidence.net/wp-content/uploads/2014/06/logo_v21_4648511896240f81ab5317d392c46de8.png" class="img-responsive" alt="logo"> --> 
-		                        <%=image_tag('logo_np.png', :class => 'img-responsive', :alt => 'logo')%>                   
+		                     <!--    <img src="http://wpresidence.net/wp-content/uploads/2014/06/logo_v21_4648511896240f81ab5317d392c46de8.png" class="img-responsive" alt="logo"> -->
+		                        <%=image_tag('logo_np.png', :class => 'img-responsive', :alt => 'logo')%>
 		                    </a>
-		                </div>  
+		                </div>
 		                <nav id="access" role="navigation">
 					    	<div class="menu-main-menu-container">
 					    		 <%
@@ -62,20 +62,20 @@
 					    	</div>
 				    	</nav>
             		</div>
-            		
-				    
+
+
             	</div>
 			</div>
 			<%if name != "disabled"%>
-				<div class = "row" style ='margin: 0 auto; margin-top: 10px;'> 
+				<div class = "row" style ='margin: 0 auto; margin-top: 20px;'>
 					<div class="header_media">
 						<div id="gmap_wrapper" data-post_id="201" data-cur_lat="" data-cur_long="" style="height:280px;max-width:1200px;margin: 0 auto;">
 							<img src='/assets/widescreen-wallpaper.jpg' style = 'height:280px; width:100%;'>
-		   			 	</div>        
-						<div class="search_wrapper fullscreen_search_open" id="search_wrapper">   
-							<div class="adv-search-1  adv_extended_class adv-search-1-close" id="adv-search-1" data-postid="201"> 
-							    <div id="adv-search-header-1"> ค้นหาที่ดิน</div>   
-							   	<%=form_for :search, :url => search_products_path, :html => {:class => 'form-inline'}, :remote => true do |f| %>  
+		   			 	</div>
+						<div class="search_wrapper fullscreen_search_open" id="search_wrapper">
+							<div class="adv-search-1  adv_extended_class adv-search-1-close" id="adv-search-1" data-postid="201">
+							    <div id="adv-search-header-1"> ค้นหาที่ดิน</div>
+							   	<%=form_for :search, :url => search_products_path, :html => {:class => 'form-inline'}, :remote => true do |f| %>
 							        <div class="adv1-holder">
 
 					                      <%=f.select :zone_id, [["ทุกภาค", 0]] + Zone.all.collect{|z| [z.name, z.id]},{}, {:class => 'form-control'}%>
@@ -86,18 +86,18 @@
 					                     <%=f.text_field :keyword, {:class => 'form-control', :placeholder => 'คำสำคัญ', :style => 'width: 300px;'}%>
 							        </div>
 							        <%=f.submit "ค้นหา", {:class => 'wpb_button  wpb_btn_adv_submit wpb_btn-large', :id => 'advanced_submit_2'}%>
-							       
-							     
-							              
+
+
+
 							        <div id="results">
-							            We found  <span id="results_no">0</span> results.  
+							            We found  <span id="results_no">0</span> results.
 							            <span id="showinpage"> Do you want to load the results now ? </span>
 							        </div>
 
-							    <%end%>   
-							</div>       
-						</div><!-- end search wrapper--> 
-					<!-- END SEARCH CODE -->   
+							    <%end%>
+							</div>
+						</div><!-- end search wrapper-->
+					<!-- END SEARCH CODE -->
 					</div>
 				</div>
 			<%end%>

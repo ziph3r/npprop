@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-sm-12 col-md-12 breadcrumb_container">
-            <div style="height:30px;"></div>
+           <!--  <div style="height:20px;"></div> -->
     </div>
-    <div class="col-sm-12 col-md-12">
-        <div class="single-content">
+    <div class="col-sm-12 col-md-12" >
+        <div class="single-content" >
             <div class="vc_row wpb_row vc_row-fluid vc_custom_1401619113429 vc_row">
-               <div class="vc_col-sm-12 col-md-12 wpb_column vc_column_container vc_column">
+               <div class="vc_col-sm-12 col-md-12 wpb_column vc_column_container vc_column" >
                   <div class="wpb_wrapper">
                     <div class="article_container bottom-estate_property nobutton" id = 'products-list'>
-                        <div class=" col-md-9 " style = 'margin-top: 20px;'>
+                        <div class=" col-md-10" style = 'margin-top: 20px;'>
                                 <div class="spinner" id="listing_loader">
                                   <div class="rect1"></div>
                                   <div class="rect2"></div>
@@ -21,7 +21,7 @@
 
                                 </div>
 
-                                <h1 class="entry-title entry-prop"><%=@product.title%></h1>
+                                <h2 class="entry-title entry-prop"><%=@product.title%></h2>
                                 <span class="price_area"><%=@product.code%> </span>
                                 <div class="single-content listing-content">
                                     <div class="notice_area">
@@ -29,68 +29,68 @@
                                             <%=@product.province%>
                                         </span>
                                     </div>
-                                    <div id="carousel-listing" class="carousel slide post-carusel" data-ride="carousel" data-interval="false">
+                                    <div>
+                                        <div id="slider1_container" style="margin: 0 auto; position: relative; top: 0px; left: 0px; width: 800px; height: 450px;">
+                                            <!-- Slides Container -->
+                                            <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 800px; height: 450px;">
+                                                <%@product.product_images.each do |image|%>
+                                                    <div>
 
-                                        <div class="carousel-inner">
-                                            <%@product.product_images.each do |image|%>
-                                                <div class="item <%=(image == @product.product_images.first) ? 'active' : ''%>">
-                                                    <%=link_to image.image.url(:original) do %>
-                                                         <img class = 'img-responsive' src="<%=image.image.url(:large)%>" />
-                                                     <%end%>
-                                                </div>
-                                            <%end%>
+                                                             <img u="image" src="<%=image.image.url(:large)%>" />
+
+                                                    </div>
+                                                <%end%>
+                                            </div>
+                                            <style>
+                                                /* jssor slider arrow navigator skin 06 css */
+                                                /*
+                                                .jssora06l              (normal)
+                                                .jssora06r              (normal)
+                                                .jssora06l:hover        (normal mouseover)
+                                                .jssora06r:hover        (normal mouseover)
+                                                .jssora06ldn            (mousedown)
+                                                .jssora06rdn            (mousedown)
+                                                */
+                                                .jssora06l, .jssora06r, .jssora06ldn, .jssora06rdn
+                                                {
+                                                    position: absolute;
+                                                    cursor: pointer;
+                                                    display: block;
+                                                    background: url(/assets/a06.png) no-repeat;
+                                                    overflow:hidden;
+                                                }
+                                                .jssora06l { background-position: -8px -38px; }
+                                                .jssora06r { background-position: -68px -38px; }
+                                                .jssora06l:hover { background-position: -128px -38px; }
+                                                .jssora06r:hover { background-position: -188px -38px; }
+                                                .jssora06ldn { background-position: -248px -38px; }
+                                                .jssora06rdn { background-position: -308px -38px; }
+                                            </style>
+                                            <!-- Arrow Left -->
+                                            <span u="arrowleft" class="jssora06l" style="width: 45px; height: 45px; top: 123px; left: 8px;">
+                                            </span>
+                                            <!-- Arrow Right -->
+                                            <span u="arrowright" class="jssora06r" style="width: 45px; height: 45px; top: 123px; right: 8px">
+                                            </span>
+
                                         </div>
-
-
-                                        <div class="carusel-back"></div>
-                                        <ol class="carousel-indicators">
-                                            <%@product.product_images.each_with_index do |image, index|%>
-                                                 <li data-target="#carousel-listing" data-slide-to="<%=index%>" class="<%=(image == @product.product_images.first) ? 'active' : ''%>">
-                                                    <img src="<%=image.image.url(:thumb)%>" alt="slider">
-                                               </li>
-                                            <%end%>
-                                         </ol>
-
-                                        <ol class="carousel-round-indicators">
-                                            <%@product.product_images.each_with_index do |image, index|%>
-                                                <li data-target="#carousel-listing" data-slide-to="<%=index%>" class="<%=(image == @product.product_images.first) ? 'active' : ''%>"></li>
-                                            <%end%>
-                                        </ol>
-
-                                        <div class="caption-wrapper">
-                                            <%@product.product_images.each_with_index do |image, index|%>
-                                                <span data-slide-to="<%=index%>" class="<%=(image == @product.product_images.first) ? 'active' : ''%>">
-                                                    <%=@product.title%>
-                                                </span>
-                                            <%end%>
-                                        </div>
-
-
-                                        <a class="left carousel-control" href="#carousel-listing" data-slide="prev">
-                                          <i class="fa fa-angle-left"></i>
-                                        </a>
-                                        <a class="right carousel-control" href="#carousel-listing" data-slide="next">
-                                          <i class="fa fa-angle-right"></i>
-                                        </a>
                                     </div>
+                                    <div style ='margin: 20px;'>
 
-                                    <p>
-                                        <%=@product.content%>
-                                    </p>
-                                    <p>
-                                        <%=@product.contact%>
-                                    </p>
+                                    </div>
                                     <div class="panel-group property-panel" id="accordion_prop_details">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
                                                  <a data-toggle="collapse" data-parent="#accordion_prop_details" href="#collapseOne"><h4 class="panel-title" id="prop_det">รายละเอียดที่ดิน   </h4></a>                    </div>
                                             <div id="collapseOne" class="panel-collapse collapse in">
                                                   <div class="panel-body">
-                                                    <div class="listing_detail col-md-6">
-                                                        <strong>พื้นที่:</strong>  <%=@product.sqr_area.nil? ? "-" : @product.sqr_area%>
+                                                    <div class="listing_detail col-md-12">
+                                                        <p style ='margin-bottom: 10px; text-align: justify;'>
+                                                            <%=@product.content%>
+                                                        </p>
                                                     </div>
                                                     <div class="listing_detail col-md-6">
-
+                                                        <strong>พื้นที่:</strong>  <%=@product.sqr_area.nil? ? "-" : @product.sqr_area%>
                                                     </div>
                                                     <div class="listing_detail col-md-6">
                                                         <strong>ราคาขาย :</strong>  <%=@product.sell_price.nil? ? "-" : @product.sell_price%>
@@ -99,16 +99,10 @@
                                                         <strong>กว้าง:</strong> <%=@product.width.nil? ? "-" : @product.width%>
                                                     </div>
                                                     <div class="listing_detail col-md-6">
-
-                                                    </div>
-                                                    <div class="listing_detail col-md-6">
                                                         <strong>ราคาที่ดิน:</strong> <%=@product.land_price.nil? ? "-" : @product.land_price%>
                                                     </div>
                                                     <div class="listing_detail col-md-6">
                                                         <strong>ลึก:</strong>  <%=@product.depth.nil? ? "-" : @product.depth%>
-                                                    </div>
-                                                    <div class="listing_detail col-md-6">
-
                                                     </div>
                                                     <div class="listing_detail col-md-6">
                                                         <strong>ค่าเช่า :</strong> <%=@product.rent_price.nil? ? "-" : @product.rent_price%>
@@ -118,6 +112,21 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="panel-group property-panel" id="accordion_prop_contact_details">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                 <a data-toggle="collapse" data-parent="#accordion_prop_contact_details" href="#collapseThree"><h4 class="panel-title" id="prop_det">ติดต่อ   </h4></a>                    </div>
+                                            <div id="collapseThree" class="panel-collapse collapse in">
+                                                  <div class="panel-body">
+                                                        <p>
+                                                            <%=@product.contact%>
+                                                        </p>
+
+                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                      <div class="panel-group property-panel" id="accordion_prop_messages">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
@@ -217,7 +226,7 @@
 </div>
 <script type="text/javascript">
      $(document).ready(function() {
-         // jQuery('#adv-search-1').removeClass('adv-search-1-close');
+
         $('#adv-search-header-1').click(function(){
             if( document.getElementById("adv_extended_options_text_adv") !== null ) {
                  $(this).parent().toggleClass('adv-search-1-close-extended');
@@ -227,6 +236,21 @@
 
 
         })
+
+
+            var options = {
+                $DragOrientation: 3,
+                $SlideDuration: 500,
+                $FillMode: 3,
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$,
+                    $ChanceToShow: 2,
+                    $AutoCenter: 2,
+                    $Steps: 1
+                }
+            };
+
+            var jssor_slider1 = new $JssorSlider$('slider1_container', options);
 
      })
 </script>
