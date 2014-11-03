@@ -2592,28 +2592,7 @@ listing_actions a{
 
 
 .featured_div {
-   width: 30px;
-   height: 30px;
-   background: purple;
-   /* Rotate */
-   -webkit-transform: rotate(-45deg);
-   -moz-transform: rotate(-45deg);
-   -ms-transform: rotate(-45deg);
-   -o-transform: rotate(-45deg);
-   transform: rotate(-45deg);
-   /* Rotate Origin */
-   -webkit-transform-origin: 0 100%;
-   -moz-transform-origin: 0 100%;
-   -ms-transform-origin: 0 100%;
-   -o-transform-origin: 0 100%;
-    transform-origin: 0 100%;
-    position: absolute;
-    bottom:-19px;
-    left: 50%;
-    border-radius: 2px;
-    background: asset_url('unit.png');
-    background-position: -8px -9px;
-    z-index:11;
+
 }
 
 .listing_wrapper.col-md-12 .property_listing  .featured_div{
@@ -9528,3 +9507,26 @@ li.success {
     color: #00ee11;
     margin-top:10px;
 }
+/* jssor slider arrow navigator skin 06 css */
+                                                /*
+                                                .jssora06l              (normal)
+                                                .jssora06r              (normal)
+                                                .jssora06l:hover        (normal mouseover)
+                                                .jssora06r:hover        (normal mouseover)
+                                                .jssora06ldn            (mousedown)
+                                                .jssora06rdn            (mousedown)
+                                                */
+                                                .jssora06l, .jssora06r, .jssora06ldn, .jssora06rdn
+                                                {
+                                                    position: absolute;
+                                                    cursor: pointer;
+                                                    display: block;
+                                                    background: asset_url('a06.png') no-repeat;
+                                                    overflow:hidden;
+                                                }
+                                                .jssora06l { background-position: -8px -38px; }
+                                                .jssora06r { background-position: -68px -38px; }
+                                                .jssora06l:hover { background-position: -128px -38px; }
+                                                .jssora06r:hover { background-position: -188px -38px; }
+                                                .jssora06ldn { background-position: -248px -38px; }
+                                                .jssora06rdn { background-position: -308px -38px; }
