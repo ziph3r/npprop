@@ -791,7 +791,9 @@ input.form-control::-moz-placeholder {
 
 .header_social{
     float: right;
-    padding: 25px 45px 0px 0px;
+    /*padding: 25px 45px 0px 0px;*/
+    position: relative;
+    top: 8px;
 }
 
 .logo_image{
@@ -2796,7 +2798,7 @@ listing_actions a{
 }
 
 .col-md-12 .blog_list_wrapper{
-    min-width: 1140px;
+    min-width: 840px;
 }
 
 .blog_unit{

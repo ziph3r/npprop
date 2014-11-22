@@ -1105,6 +1105,9 @@ pre code {
 }
 
 @media (min-width: 768px) {
+  .widget-area-sidebar {
+    display: none;
+  }
   .container {
     width: 750px;
   }
@@ -1277,6 +1280,9 @@ pre code {
 }
 
 @media (min-width: 992px) {
+  .widget-area-sidebar {
+    display: block;
+  }
   .container {
     width: 970px;
   }
@@ -1449,6 +1455,9 @@ pre code {
 }
 
 @media (min-width: 1200px) {
+  .widget-area-sidebar {
+    display: block;
+  }
   .container {
     width: 1170px;
   }

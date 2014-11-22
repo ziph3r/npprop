@@ -32,12 +32,12 @@ class ProductsController < FrontendsController
 				condition_str += " and (search_price <= ?) "
 				args << params[:search][:max_price].to_f
 			end
-			@products = Product.where([condition_str, *args]).all.order('updated_at desc')
+			@products = Product.where([condition_str, *args]).all.order('updated_at desc').paginate(:page => params[:page])
 		else
 			@products = Product.where('is_show = true ').all.order('updated_at desc').limit(8)
 		end
-		
-		
+
+
 
 		respond_to do |format|
 			format.html {}
@@ -49,22 +49,22 @@ class ProductsController < FrontendsController
 		params[:page] ||= 1
 		@product_stars = Product.where(
 			["province_id = ? and is_show = true ", params[:zone_id]]
-		).all.order('updated_at desc').paginate(:page => params[:page])	
-		sql = "			
+		).all.order('updated_at desc').paginate(:page => params[:page])
+		sql = "
 			select
 				z.id as zone_id,
 				z.name as zone_name,
 				pv.id as pv_id,
 				pv.name as pv_name,
 				count(products.id) as total
-			from products 
+			from products
 			inner join zones z on z.id = products.zone_id
 			inner join provinces pv on pv.id = products.province_id
 			where products.is_show = true
-			group by z.id, z.name, pv.id, pv.name 
+			group by z.id, z.name, pv.id, pv.name
 			order by z.id
 		"
-		@zones = Zone.all 
+		@zones = Zone.all
 		@selected_province = Province.find(params[:zone_id])
 		@products = Product.find_by_sql(sql)
 
@@ -79,30 +79,30 @@ class ProductsController < FrontendsController
 		@product_stars = Product.where(
 			["province_id = ? and is_show = true ", params[:zone_id]]
 		).all.order('updated_at desc')
-		sql = "			
+		sql = "
 			select
 				z.id as zone_id,
 				z.name as zone_name,
 				pv.id as pv_id,
 				pv.name as pv_name,
 				count(products.id) as total
-			from products 
+			from products
 			inner join zones z on z.id = products.zone_id
 			inner join provinces pv on pv.id = products.province_id
 			where products.is_show = true
-			group by z.id, z.name, pv.id, pv.name 
+			group by z.id, z.name, pv.id, pv.name
 			order by z.id
 		"
-		@zones = Zone.all 
+		@zones = Zone.all
 		@inbox = Inbox.new
-		@products = Product.find_by_sql(sql) 
+		@products = Product.find_by_sql(sql)
 	end
 
 	def message
 		product = Product.find(params[:id])
 
 		@inbox = Inbox.new(inbox_params)
-		
+
 		if @inbox.valid?
 			@inbox.product = product
 			@inbox.save
@@ -117,7 +117,7 @@ class ProductsController < FrontendsController
 			end
 		end
 
-		
+
 	end
 
 	private

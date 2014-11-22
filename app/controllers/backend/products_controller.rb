@@ -26,8 +26,8 @@ class Backend::ProductsController < ApplicationController
 		@products = Product.where([condition_str, *args])
 		.all
 		.joins("inner join zones z on z.id = products.zone_id ")
-		.order("products.created_at desc")	
-		.paginate(:page => params[:page])		
+		.order("products.created_at desc")
+		.paginate(:page => params[:page])
 	end
 
 	def new
@@ -77,12 +77,18 @@ class Backend::ProductsController < ApplicationController
 
 	def image_upload
 		@product = Product.find(params[:id])
-		@product_image = @product.product_images.new(product_image_params)
-		if @product_image.save
-			redirect_to upload_backend_product_url(@product)	        
-		else 
-			# redirect_to action: 'new'
+		begin
+			@product_image = @product.product_images.new(product_image_params)
+			if @product_image.save
+				redirect_to upload_backend_product_url(@product)
+			else
+				# redirect_to action: 'new'
+			end
+		rescue
+			render :upload
 		end
+
+
 	end
 
 	def remove_image
@@ -90,7 +96,7 @@ class Backend::ProductsController < ApplicationController
 	    product_image = ProductImage.find(params[:image_id])
 	    product_image.destroy if product_image
 
-	    redirect_to upload_backend_product_url(@product)	
+	    redirect_to upload_backend_product_url(@product)
 	end
 
 	private

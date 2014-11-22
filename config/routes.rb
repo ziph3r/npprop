@@ -14,9 +14,7 @@ Rails.application.routes.draw do
       get :upload, on: :member
     	# get :search, on: :collection
     end
-    resources :news do
-      member { post :mercury_update}
-    end
+    resources :news
 
     resources :images
     resources :contacts
@@ -28,11 +26,13 @@ Rails.application.routes.draw do
   resources :home, :only => [:index]
   resources :products, only: [:index, :show] do
     get 'zones/:zone_id' => 'products#zone', on: :collection, as: :zone
+    get 'search' => 'products#index', on: :collection
     post 'search' => 'products#index', on: :collection
     post 'message' => 'products#message', on: :member
   end
 
   resources :news, only: [:index, :show] do
+    get 'search'=> 'news#index', on: :collection
     post 'search'=> 'news#index', on: :collection
   end
 

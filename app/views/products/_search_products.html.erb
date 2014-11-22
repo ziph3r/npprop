@@ -1,4 +1,14 @@
-<h2 class="shortcode_title">ผลการค้นหา</h2>  
+<h2 class="shortcode_title">ผลการค้นหา</h2>
 <%@products.each do |p| %>
 	<%=render :partial => '/products/product_detail', :locals => {:product => p}%>
 <%end%>
+<div class ='col-xs-12 text-center' style ='font-size: 14px;'>
+  <%=will_paginate @products, :params => { :controller => "products", :action => "index", :search => params[:search]}%>
+</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".pagination").find("a").each(function() {
+			$(this).attr("data-remote","true");
+		})
+	})
+</script>

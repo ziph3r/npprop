@@ -1,28 +1,28 @@
 <div class="row" style='margin-top:20px;'>
-    <div class="col-xs-12 col-md-12 breadcrumb_container">
-    </div>    
-    <div class=" col-xs-9 col-xs-push-3 rightmargin " id = 'news-table'>
+    <div class="col-xs-12 col-lg-12 breadcrumb_container">
+    </div>
+    <div class=" col-md-12 col-lg-9 col-lg-push-3 rightmargin " id = 'news-table'>
          <%=render :partial => 'news_table'%>
     </div><!-- end 9col container-->
-    
+
 <!-- begin sidebar -->
   <div class="clearfix visible-xs"></div>
-    <div class="col-xs-12 col-md-3 col-md-pull-9  widget-area-sidebar" id="primary">
+    <div class="col-md-12 col-lg-3 col-lg-pull-9  widget-area-sidebar" id="primary">
         <ul class="xoxo">
                  <li id="search-3" class="widget widget-container sbg_widget BlogSidebar widget_search">
-                  
+
                    <%=form_for :search, :url => search_news_index_path, :html => {:id => 'searchform', :remote => true} do |f|%>
                        <input type="text" class="form-control" name="search[s]" id="search_s" placeholder="Type Keyword">
                       <button class="wpb_button  wpb_btn-info wpb_btn-large" id="submit-form">Search</button>
                    <%end%>
                 </li>
-                <li id="recent-posts-3" class="widget widget-container sbg_widget BlogSidebar widget_recent_entries">		
-                    <h3 class="widget-title-sidebar">ข่าวใหม่</h3>		
+                <li id="recent-posts-3" class="widget widget-container sbg_widget BlogSidebar widget_recent_entries">
+                    <h3 class="widget-title-sidebar">ข่าวใหม่</h3>
                     <ul>
                   					<%@lastest_newses.each do |n|%>
                               <li>
-                                 <% 
-                                  title = n.title 
+                                 <%
+                                  title = n.title
                                   if n.title && n.title.size > 30
                                     title = n.title[0..30] + " ..."
                                   end
@@ -33,10 +33,10 @@
                             <%end%>
             				</ul>
     		        </li>
-               
+
         </ul>
 
-    </div>   
+    </div>
 
   </div>
 </div>
@@ -44,6 +44,6 @@
    $(document).ready(function() {
      // jQuery('#adv-search-1').removeClass('adv-search-1-close');
      $('#search_wrapper').hide();
-    
+
    })
 </script>

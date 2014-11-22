@@ -1,9 +1,9 @@
- <div class="col-md-12  listing_wrapper blog2v"> 
-    <div class="property_listing" data-link="<%=news_path(news)%>" style ='margin-bottom: 10px !important;'>
+ <div class="col-md-12  listing_wrapper blog2v">
+    <div class="property-list-item" data-link="<%=news_path(news)%>" style ='margin-bottom: 10px !important;'>
         <!-- <div class="blog_unit_image"><img width="265" height="163" src="http://wpresidence.net/wp-content/uploads/2014/05/demo53-265x163.jpg" class="lazyload img-responsive wp-post-image" alt="demo5" data-original="http://wpresidence.net/wp-content/uploads/2014/05/demo53-265x163.jpg"><div class="listing-cover"></div>
                 <a href="http://wpresidence.net/buying-a-home/"> <span class="listing-cover-plus">+</span></a></div> -->
-  
-           <h4> 
+
+           <h4>
              <%=link_to news_path(news), {} do %>
                   <%if news.title && news.title.size > 80 %>
                     <%=news.title[0..80] + " ..."%>
@@ -12,25 +12,25 @@
                   <%end%>
               <%end%>
            </h4>
-        
+
            <div class="blog_unit_meta" style ='font-weight: bold;margin-top: 10px;'>
-              <%=date_str(news.updated_at)%>     
+              <%=date_str(news.updated_at)%>
            </div>
-           
+
             <div class="listing_details the_grid_view">
                 <%if news.content && news.content.size > 350 %>
                     <%=news.content[0..350] + "..."%>
                   <%else%>
                     <%=news.content%>
-                  <%end%>         
+                  <%end%>
             </div>
-       
-        
-           
+
+
+
              <%=link_to news_path(news), {:class => 'read_more'} do %>
-             อ่านต่อ<i class="fa fa-angle-right"></i> 
+             อ่านต่อ<i class="fa fa-angle-right"></i>
              <%end%>
-           
-     
-    </div>          
-</div> 
+
+
+    </div>
+</div>
