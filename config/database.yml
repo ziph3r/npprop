@@ -6,15 +6,15 @@
 #
 default: &default
   adapter: postgresql
-  username: lanc
-  password: 1q2w3e
+  username: npdb
+  password: 1qa2ws3ed4rf$$
   host: localhost
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: nppdb
+  database: np_db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -25,4 +25,4 @@ test:
 
 production:
   <<: *default
-  database: nppdb
+  database: np_db
